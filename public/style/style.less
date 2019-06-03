@@ -1,0 +1,65 @@
+@font-face {
+  font-family: amatic;
+  src: url("../../public/font/Amatic-Bold.ttf");
+}
+body {
+  font-family: amatic;
+}
+.background() {
+  background: url("../../public/image/bg.jpg");
+  background-size: cover;
+}
+.cover-box() {
+  margin: 70px auto;
+  width: 70%;
+  height: 100%;
+  border-radius: 10px;
+  .box-shadow();
+  background-color: rgba(170, 170, 170, 0.4);
+  padding: 0.1em 0;
+}
+
+.sign-box() {
+  width: 80%;
+  .cover-box();
+  div {
+    padding: 2em;
+    label {
+      font-size: 1.6em;
+      color: #fff;
+      display: block;
+      padding-bottom: 0.4em;
+    }
+    input {
+      width: 100%;
+      line-height: 2em;
+      font-size: 1.4em;
+      font-family: amatic;
+      padding-left: 0.4em;
+      border-radius: 12px;
+      border: 0px;
+    }
+  }
+}
+
+.button{
+      background-color: rgba(129, 205, 192, 1);
+    cursor: pointer;
+    font-size: 2em;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0;
+    border: 0px;
+}
+
+.box-shadow(@offsetX: 1px,@offsetY: 1px,@blur: 20px,@color:#aaa) {
+  // box-shadow: 1px 1px 20px #aaa;
+  box-shadow: @arguments;
+}
+// cover.vue
+.coverH {
+  font-size: 20vw;
+}
+.coverW {
+  font-size: 8vw;
+}

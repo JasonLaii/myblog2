@@ -1,3 +1,59 @@
+# myblog
+
+
+## technic
+### vue全家桶,bootstrap,nodejs,express,mongodb
+
+## npm module
+### front end
+#### axios,sweetalert
+
+### back end
+#### mongodb,winston,marked,express-session,moment,
+
+
+## the feature i want to achieve
+- 注册
+- 登入
+- 登出
+- 发表文章
+- 删除文章
+- 发表评论
+- 删除评论
+- 日志
+
+
+
+## model
+UserModel
+| ObjectId | account | password | nickname | avatar | bio | description | gender |
+
+CommentModel
+| ObjectId | author:account | comment | ipAddress |
+
+ArticleModel
+| ObjectId | author:account | title | summary | content | viewNum | commentNum |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # myblog2
 
 ## Project setup
