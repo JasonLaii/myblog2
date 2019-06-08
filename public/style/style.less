@@ -2,9 +2,33 @@
   font-family: amatic;
   src: url("../../public/font/Amatic-Bold.ttf");
 }
-body {
+
+body, h3 {
+  margin: 0;
+}
+a{
+  cursor: pointer;
+}
+.cover,
+.index-box,
+.signin,
+.signup {
   font-family: amatic;
 }
+
+.header,
+.footer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.footer{
+  margin: 0 auto;
+  font-size: 0.4em;
+  text-align: center;
+  a{
+    color: #aaa;
+  }
+}
+// function
 .background() {
   background: url("../../public/image/bg.jpg");
   background-size: cover;
@@ -42,14 +66,44 @@ body {
   }
 }
 
-.button{
-      background-color: rgba(129, 205, 192, 1);
-    cursor: pointer;
-    font-size: 2em;
-    color: #fff;
-    border-radius: 10px;
-    padding: 0;
+.header() {
+  width: 100%;
+  background-color: rgba(192, 57, 43, 0.3);
+  position: relative;
+  div {
+    padding-left: 1em;
+    align-items: center;
+    font-size: 1.4em;
+    line-height: 1em;
+  }
+}
+.header-search() {
+  input {
+    border-radius: 3px;
+    outline: none;
     border: 0px;
+    font-size: 0.7em;
+    padding: 6px 10px;
+  }
+  button {
+    border: 0px;
+    outline: none;
+    border-radius: 4px;
+    background-color: rgba(192, 57, 43, 0.7);
+    width: 40px;
+    cursor: pointer;
+    line-height: 2.2em;
+  }
+}
+//////////////////////////////////////////////
+.button {
+  background-color: rgba(129, 205, 192, 1);
+  cursor: pointer;
+  font-size: 2em;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0;
+  border: 0px;
 }
 
 .box-shadow(@offsetX: 1px,@offsetY: 1px,@blur: 20px,@color:#aaa) {

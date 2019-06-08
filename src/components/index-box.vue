@@ -30,6 +30,7 @@ export default {
 
 .index-box{
   .cover-box()
+
 }
 
 .signup, .signin, .visitor{

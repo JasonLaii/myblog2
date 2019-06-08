@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <cover></cover> -->
     <router-view></router-view>
   </div>
 </template>
@@ -18,7 +17,7 @@ export default {
 <style lang="less">
 @import '../public/style/style.less';
 body{
-  .background()
+  .background();
 }
 a{
   text-decoration: none;

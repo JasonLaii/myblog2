@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header></Header>
-    
+    <MainPart></MainPart>
     <Footer></Footer>
   </div>
 </template>
@@ -13,7 +13,9 @@ export default {
   },
   components: {
     Header: () => import("../components/header"),
-    Footer: () => import("../components/footer")
+    Footer: () => import("../components/footer"),
+    ContentCard: ()=> import('../components/content-card'),
+    MainPart: ()=> import('../components/main-part')
   }
 };
 </script>
@@ -23,6 +25,6 @@ export default {
 
 body {
   background: none;
-  background-color: #feffff;
+  background-color: #eee;
 }
 </style>

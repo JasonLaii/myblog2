@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>THIS IS FOOTER</p>
+  <div class="footer">
+    <p> <a href="https://github.com/JasonLaii"> CopyRight@Jason</a></p>
   </div>
 </template>
 <script>
@@ -11,4 +11,5 @@ export default {
 
 <style lang="less">
 @import '../../public/style/style.less';
+
 </style>
