@@ -1,0 +1,1 @@
+const Article = require('../lib/mongodb').Article

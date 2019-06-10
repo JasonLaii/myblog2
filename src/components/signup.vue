@@ -16,13 +16,27 @@
     </div>
 
     <div class="signup-submit">
-      <input type="button" value="SIGNUP">
+      <input type="button" value="SIGNUP" @click="addUser">
     </div>
   </form>
 
 </template>
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      
+    }
+  },
+  methods:{
+    addUser(){
+      let account = this.account;
+      let password = this.password;
+      let repassword = this.repassword;
+
+    }
+  }
+};
 </script>
 <style lang="less">
 @import "../../public/style/style.less";

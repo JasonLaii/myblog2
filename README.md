@@ -26,7 +26,7 @@
 
 ## model
 UserModel
-| ObjectId | account | password | nickname | avatar | bio | description | gender |
+| ObjectId | account | password | nickname | avatar | bio | gender |
 
 CommentModel
 | ObjectId | author:account | comment | ipAddress |
