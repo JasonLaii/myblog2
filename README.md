@@ -9,7 +9,7 @@
 #### axios,sweetalert
 
 ### back end
-#### mongodb,winston,marked,express-session,moment,
+#### mongodb,winston,marked,express-session,moment,bcrypt
 
 
 ## the feature i want to achieve

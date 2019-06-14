@@ -1,5 +1,5 @@
 
-const getter = {
+const getters = {
   //user
   account(state){
     return state.account
@@ -40,4 +40,4 @@ const getter = {
   }
 }
 
-export default getter
+export default getters

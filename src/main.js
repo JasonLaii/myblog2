@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './route'
-import store from 'vuex'
+import store from './store'
 import axios from 'axios'
 import Router from 'vue-router'
 

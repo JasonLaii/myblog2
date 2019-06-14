@@ -1,7 +1,7 @@
 
 import * as type from './type';
 
-const mutation = {
+const mutations = {
   //user
   [type.USER_ACCOUNT](state,{ account }){
     state.account = account
@@ -43,4 +43,4 @@ const mutation = {
 }
 
 
-export default mutation
+export default mutations

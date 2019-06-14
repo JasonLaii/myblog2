@@ -30,13 +30,14 @@
       >
     </div>
 
-    <div class="signup-submit"  @click="signup">
+    <div class="signup-submit" @click="signup">
       <input type="button" value="SIGNUP">
     </div>
   </form>
 </template>
 <script>
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import { signup } from "../api/user";
 
 export default {
   data() {
@@ -49,20 +50,20 @@ export default {
   methods: {
     signup() {
       try {
-        if(this.account === ''){
-          throw new Error("账号不能为空！！")
+        if (!this.account) {
+          throw new Error("账号不能为空！！");
         }
-        if(this.password === ''){
-          throw new Error("密码不能为空！！")
+        if (this.password === "") {
+          throw new Error("密码不能为空！！");
         }
-        if(this.repassword === ''){
-          throw new Error('请再次输入密码！！')
+        if (this.repassword === "") {
+          throw new Error("请再次输入密码！！");
         }
         if (this.password !== this.repassword) {
           throw new Error("两次输入的密码不一致！！");
         }
       } catch (err) {
-        let error = err.toString().slice(6)
+        let error = err.toString().slice(6);
 
         swal({
           title: "ERROR",
@@ -71,14 +72,16 @@ export default {
           button: "Retry!"
         });
       }
-      this.$axios.post("", {
+
+      const data = {
         account: this.account,
         password: this.password
-      }).then((res)=>{
-        console.log(res)
-      }).catch((err)=>{
-        console.log(err)
-      })
+      };
+
+      //vuex-action 要使用actions 不能用action
+      //用action会出现 [vuex]unknown action type:.. 问题
+      this.$store.dispatch("SIGN_UP",data)
+
     }
   }
 };
