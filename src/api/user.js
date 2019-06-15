@@ -4,17 +4,39 @@ import Vue from 'vue';
 
 let vm = new Vue();
 
+// let instance = axios.create({
+//   baseURL: 'http://localhost:8080',
+//   timeout: 3000,
+//   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+// })
+
 //注册
 const signup = (account,password) =>{
   const data = {
     account,
     password
   }
-  return axios.post('/auth/signup',data)
-
-  // vm.$axios.post('/signup',data).then(()=>{
-  //   console.log('send data to backend successfully.')
+  let instance = axios.create({
+    headers: {'content-type': 'applicatioin/x-www-form-urlencoded'}
+  });
+  // return instance.post('api/signup',data).then(res=>{
+  //   res.data
   // })
+
+  instance.post('/api/signup',{
+    account: data.account,
+    password: data.password
+  }).then(res=>{
+    console.log("response")
+    console.log(res)
+  }).catch(err=>{
+    console.log("data")
+    console.log(data)
+    console.log("error")
+    console.log(err)
+    console.log(err.config)
+  })
+
 }
 
 //登录

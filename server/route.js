@@ -1,9 +1,9 @@
 
-module.exports = function(app){
 
-  app.use('/signup',require('./api/user'))
-  app.use('/',function(req,res,next){
-    res.render("THIS IS BACKEND PAGES.")
+
+module.exports = function(app){
+  app.use('/api/signup',require('./api/user'));
+  app.use('/',(req,res)=>{
+    res.send("BACKEND")
   })
-  
 }

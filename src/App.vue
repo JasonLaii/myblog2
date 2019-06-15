@@ -9,7 +9,7 @@
 export default {
   name: 'app',
   components: {
-    cover:()=>import('./views/cover')
+    // cover:()=>import('./views/cover')
   }
 }
 </script>

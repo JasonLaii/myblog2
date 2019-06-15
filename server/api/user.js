@@ -15,6 +15,7 @@ router.post('/signup',(req,res,next)=>{
       console.log("用户已存在");
     }else{
       //加密
+      console.log('arrived backend.')
       bcrypt.hash(password,10,function(err,hash){
         if(err) throw new Error(err)
 
@@ -30,6 +31,10 @@ router.post('/signup',(req,res,next)=>{
     }
   })
 
+})
+
+router.get('/',(req,res)=>{
+  res.render("THIS IS BACKEND PAGE.")
 })
 
 module.exports = router;
