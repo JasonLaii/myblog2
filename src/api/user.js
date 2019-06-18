@@ -4,29 +4,31 @@ import Vue from 'vue';
 
 let vm = new Vue();
 
-// let instance = axios.create({
-//   baseURL: 'http://localhost:8080',
-//   timeout: 3000,
-//   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-// })
+let instance = axios.create({
+  baseURL: 'http://localhost:8080',
+  timeout: 3000,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+})
 
 //注册
-const signup = (account,password) =>{
+const signup = ({ account,password }) =>{
   const data = {
     account,
     password
   }
-  let instance = axios.create({
-    headers: {'content-type': 'applicatioin/x-www-form-urlencoded'}
-  });
+  console.log("signup-function")
+  console.log(data)
+
+  // let instance = axios.create({
+  //   headers: {'content-type': 'applicatioin/x-www-form-urlencoded'}
+  // });
+
   // return instance.post('api/signup',data).then(res=>{
   //   res.data
   // })
 
-  instance.post('/api/signup',{
-    account: data.account,
-    password: data.password
-  }).then(res=>{
+  instance.post('/api/signup',data)
+  .then(res=>{
     console.log("response")
     console.log(res)
   }).catch(err=>{

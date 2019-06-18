@@ -25,11 +25,17 @@ db.on("disconnected", function() {
 });
 
 
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
+
+//设置模板目录
+// app.set('views','./public')
+//设置模板引擎
+// app.set('view engine','html')
 
 //设置静态文件夹
-app.use('/public',express.static('public'))
-app.set('views','./public/index.html')
+// app.use(express.static(path.join(__dirname,'public')))
+
 
 app.use((err,req,res,next)=>{
   res.status(404).send({ error: err.message })

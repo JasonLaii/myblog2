@@ -6,10 +6,9 @@ const actions = {
   //报错400 --一般是 代理出现问题
   [types.SIGN_UP]( context,data ) {
     console.log("this is in store-action")
-    // console.log(data)
+    console.log(data)
 
-
-    signup(data.account,data.password);
+    signup(data);
 
 
   }

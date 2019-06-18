@@ -1,5 +1,5 @@
 <template>
-  <form method="post" class="signup" enctype="multipart/form-data">
+  <form method="post" class="signup">
     <div class="signup-account">
       <label>ACCOUNT</label>
       <input
@@ -80,8 +80,7 @@ export default {
 
       console.log("THIS IS IN Components")
       console.log(data)
-      // console.log(this.account)
-      // console.log(this.password)
+      
 
       //vuex-action 要使用actions 不能用action
       //用action会出现 [vuex]unknown action type:.. 问题

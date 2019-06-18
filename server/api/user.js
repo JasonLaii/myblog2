@@ -5,10 +5,18 @@ const User = require('../models/user')
 
 //注册
 router.post('/signup',(req,res,next)=>{
+  console.log("req.body")
+  console.log(req.body)
+  
+  console.log("req.params")
+  console.log(req.params)
+  
+  
   const { account, password } = req.body;
-
+  console.log("account: " + account + "   password: " + password)
   User.findOne({ account: account },(err,account)=>{
     if(err) throw new Error(err)
+
 
     if(account){
       //用户已存在
@@ -33,8 +41,5 @@ router.post('/signup',(req,res,next)=>{
 
 })
 
-router.get('/',(req,res)=>{
-  res.render("THIS IS BACKEND PAGE.")
-})
 
 module.exports = router;
