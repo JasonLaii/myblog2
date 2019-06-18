@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   account: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  gender: { type: String, enum: ["x", "m", "f"], required: true },
-  nickname: String,
-  avatar: String,
-  bio: String
+  gender: { type: String, enum: ["x", "m", "f"], default: 'x' },
+  nickname: {type: String, default: ''},
+  avatar: {type: String, default: 'image/avatar.jpg'},
+  bio: {type: String, default: ''}
 });
 UserSchema.set("autoIndex", false);
 

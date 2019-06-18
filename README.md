@@ -13,7 +13,7 @@
 
 
 ## the feature i want to achieve
-- 注册
+- 注册 ----------✌
 - 登入
 - 登出
 - 发表文章

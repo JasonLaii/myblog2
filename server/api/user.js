@@ -5,25 +5,19 @@ const User = require('../models/user')
 
 //注册
 router.post('/signup',(req,res,next)=>{
-  console.log("req.body")
-  console.log(req.body)
-  
-  console.log("req.params")
-  console.log(req.params)
-  
   
   const { account, password } = req.body;
-  console.log("account: " + account + "   password: " + password)
-  User.findOne({ account: account },(err,account)=>{
-    if(err) throw new Error(err)
 
+  User.findOne({ account: account }).count().then((count)=>{
 
-    if(account){
+    console.log("account outside : " + account)
+    if(count>0){
       //用户已存在
       console.log("用户已存在");
     }else{
       //加密
       console.log('arrived backend.')
+      console.log("account inside:" + account)
       bcrypt.hash(password,10,function(err,hash){
         if(err) throw new Error(err)
 
@@ -31,9 +25,10 @@ router.post('/signup',(req,res,next)=>{
           account: account,
           password: hash
         }
-        User.create(user).then((err,user)=>{
-          if(err) throw new Error(err)
-        })
+        // console.log("Create account: " + account)
+        // console.log("HASH-PASSWORD: "+ hash)
+        
+        User.create(user)
         
       })
     }

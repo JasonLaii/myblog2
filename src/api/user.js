@@ -11,7 +11,7 @@ let instance = axios.create({
 })
 
 //注册
-const signup = ({ account,password }) =>{
+const signup = ( account,password ) =>{
   const data = {
     account,
     password
@@ -27,7 +27,7 @@ const signup = ({ account,password }) =>{
   //   res.data
   // })
 
-  instance.post('/api/signup',data)
+  axios.post('/api/signup',data)
   .then(res=>{
     console.log("response")
     console.log(res)

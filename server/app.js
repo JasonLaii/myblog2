@@ -10,7 +10,7 @@ const app = express();
 
 //连接数据库
 mongoose.connect(url,{ useNewUrlParser: true });
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 
 let db = mongoose.connection;
 
@@ -25,8 +25,8 @@ db.on("disconnected", function() {
 });
 
 
-app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
 
 //设置模板目录
 // app.set('views','./public')

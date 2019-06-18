@@ -8,7 +8,7 @@ const actions = {
     console.log("this is in store-action")
     console.log(data)
 
-    signup(data);
+    signup(data.account,data.password);
 
 
   }
