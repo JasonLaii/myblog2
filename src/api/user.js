@@ -1,14 +1,5 @@
 
 import axios from 'axios';
-import Vue from 'vue';
-
-let vm = new Vue();
-
-let instance = axios.create({
-  baseURL: 'http://localhost:8080',
-  timeout: 3000,
-  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-})
 
 //注册
 const signup = ( account,password ) =>{
@@ -19,25 +10,7 @@ const signup = ( account,password ) =>{
   console.log("signup-function")
   console.log(data)
 
-  // let instance = axios.create({
-  //   headers: {'content-type': 'applicatioin/x-www-form-urlencoded'}
-  // });
-
-  // return instance.post('api/signup',data).then(res=>{
-  //   res.data
-  // })
-
-  axios.post('/api/signup',data)
-  .then(res=>{
-    console.log("response")
-    console.log(res)
-  }).catch(err=>{
-    console.log("data")
-    console.log(data)
-    console.log("error")
-    console.log(err)
-    console.log(err.config)
-  })
+  return axios.post('/api/signup',data)
 
 }
 
@@ -47,7 +20,7 @@ const signin = (account,password) =>{
     account,
     password
   };
-  return axios.post("/signin", data);
+  return axios.post("/api/signin", data);
 }
 
 export {

@@ -14,10 +14,15 @@ router.post('/signup',(req,res,next)=>{
     if(count>0){
       //用户已存在
       console.log("用户已存在");
+      res.json({
+        success: false,
+        message: '用户已存在'
+      });
     }else{
       //加密
       console.log('arrived backend.')
       console.log("account inside:" + account)
+
       bcrypt.hash(password,10,function(err,hash){
         if(err) throw new Error(err)
 
@@ -25,15 +30,25 @@ router.post('/signup',(req,res,next)=>{
           account: account,
           password: hash
         }
-        // console.log("Create account: " + account)
-        // console.log("HASH-PASSWORD: "+ hash)
         
-        User.create(user)
+        User.create(user).then(user=>{
+          res.json({
+            success: true,
+            message: '注册成功！'
+          })
+        })
         
       })
     }
   })
 
+})
+
+//登录
+router.post('/signup',(req,res,next)=>{
+  const data = req.body;
+
+  
 })
 
 

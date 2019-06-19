@@ -18,6 +18,9 @@ const mutations = {
   [type.USER_BIO](state, { bio }){
     state.bio = bio
   },
+  [type.SET_MESSAGE](state, { message }){
+    state.message = message
+  },
 
   //article
   [type.ARTICLE_TITLE](state,{ title }){

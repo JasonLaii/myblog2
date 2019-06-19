@@ -7,6 +7,8 @@ const state = {
   avatar: "image/avatar.jpg",
   bio: "",
 
+  message: {},
+
   //article
   title: "",
   summary: "",

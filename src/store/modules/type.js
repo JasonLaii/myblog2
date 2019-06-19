@@ -4,7 +4,9 @@ const USER_PASSWORD = "USER_PASSWORD";
 const USER_NICKNAME = "USER_NICKNAME";
 const USER_AVATAR = "USER_AVATAR";
 const USER_BIO = "USER_BIO";
+const SET_MESSAGE = "SET_MESSAGE";
 const SIGN_UP = "SIGN_UP";
+const SIGN_IN = "SIGN_IN";
 
 //ARTICLE
 const ARTICLE_TITLE = "ARTICLE_TITLE";
@@ -23,6 +25,8 @@ export {
   USER_AVATAR,
   USER_BIO,
   SIGN_UP,
+  SET_MESSAGE,
+  SIGN_IN,
   
   //article
   ARTICLE_TITLE,
