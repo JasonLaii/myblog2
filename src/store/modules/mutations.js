@@ -18,8 +18,11 @@ const mutations = {
   [type.USER_BIO](state, { bio }){
     state.bio = bio
   },
-  [type.SET_MESSAGE](state, { message }){
+  [type.SET_MESSAGE](state,message){
     state.message = message
+  },
+  [type.TOKEN]( state, { token }){
+    state.token = token
   },
 
   //article

@@ -7,6 +7,7 @@ const USER_BIO = "USER_BIO";
 const SET_MESSAGE = "SET_MESSAGE";
 const SIGN_UP = "SIGN_UP";
 const SIGN_IN = "SIGN_IN";
+const TOKEN = "TOKEN"
 
 //ARTICLE
 const ARTICLE_TITLE = "ARTICLE_TITLE";
@@ -24,9 +25,11 @@ export {
   USER_NICKNAME,
   USER_AVATAR,
   USER_BIO,
+
   SIGN_UP,
-  SET_MESSAGE,
   SIGN_IN,
+  SET_MESSAGE,
+  TOKEN,
   
   //article
   ARTICLE_TITLE,

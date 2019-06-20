@@ -32,17 +32,19 @@ export default {};
 </script>
 
 <style lang="less" scoped>
+@import "../../public/style/style.less";
+
 p {
   margin: 0;
 }
 
 .content-card {
   padding: 30px 16px;
-  margin: 10px 0;
+  margin: 30px 0;
   background-color: #fff;
   border-radius: 3px;
   border: none;
-  box-shadow: 1px 1px 10px #aaa;
+  .box-shadow()
 }
 .avatar {
   width: 8%;

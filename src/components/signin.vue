@@ -32,7 +32,14 @@ export default {
         password: this.password
       }
 
-      this.$store.dispatch("SIGN_IN",data)
+      this.$store.dispatch("SIGN_IN",data).then(()=>{
+        console.log(this.$store.getters.message)
+        if(this.$store.getters.message.success){
+          this.$router.push('/index')
+        }
+      })
+      
+
     }
   }
 }

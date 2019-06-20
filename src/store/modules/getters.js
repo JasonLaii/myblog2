@@ -19,6 +19,15 @@ const getters = {
   bio(state){
     return state.bio
   },
+  signin(state){
+    return state.signin
+  },
+  token(state){
+    return state.token
+  },
+  message(state){
+    return state.message
+  },
 
   //article
   title(state){

@@ -1,12 +1,29 @@
 <template>
   <div class="header">
     <div class="header-title">
-        <p><a>我的blog</a></p>
+      <p>
+        <a>{{title}}</a>
+      </p>
     </div>
 
     <div class="header-user">
-      <i class="fa fa-user-circle-o fa-lg fa-fw" aria-hidden="true"></i>
+      <i class="fa fa-user-circle-o fa-lg fa-fw" aria-hidden="true" @click=" show= !show"></i>
     </div>
+
+    <template v-if="show">
+      <div class="dropdown">
+        <template v-if="flag">
+          <a href>个人主页</a>
+          <a href>发表文章</a>
+          <a href>退出登录</a>
+        </template>
+
+        <template v-else>
+          <a href>登录</a>
+          <a href>注册</a>
+        </template>
+      </div>
+    </template>
 
     <div class="header-search">
       <input type="text" name="search">
@@ -17,7 +34,23 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: "我的blog",
+      flag: false,
+      show: false
+    };
+  },
+  methods: {},
+  mounted() {
+    if (this.$store.getters.token) {
+      this.flag = true;
+    } else {
+      this.flag = false;
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -29,6 +62,7 @@ export default {};
   }
   .header-title {
     display: inline-block;
+    padding-left: 1em;
   }
   .header-search {
     display: inline-block;
@@ -61,6 +95,32 @@ export default {};
     input {
       width: 74%;
     }
+  }
+}
+.display {
+  display: inline-block;
+}
+.dropdown {
+  position: absolute;
+  width: 100px;
+  right: 2%;
+  top: 80%;
+  background-color: #fff;
+  border-radius: 6px;
+  outline: none;
+  border: 0px;
+  .box-shadow(1px, 1px, 6px);
+  a {
+    font-size: 14px;
+    color: #000;
+    display: block;
+    text-align: center;
+    padding: 16px 16px;
+  }
+  a:hover {
+    background-color: rgba(238, 238, 238, 1);
+    font-weight: 100;
+    .box-shadow(1px, 1px, 6px);
   }
 }
 </style>

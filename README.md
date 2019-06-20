@@ -2,19 +2,20 @@
 
 
 ## technic
-### vue全家桶,bootstrap,nodejs,express,mongodb
+### vue全家桶,nodejs,express,mongodb
 
 ## npm module
 ### front end
-#### axios,sweetalert
+#### axios,sweetalert,font-awesome
 
 ### back end
-#### mongodb,winston,marked,express-session,moment,bcrypt
+#### mongodb,mongoose,bcrypt,jsonwebtoken
 
 
 ## the feature i want to achieve
 - 注册 ----------✌
 - 登入 ----------✌
+- token令牌认证
 - 登出
 - 发表文章
 - 删除文章

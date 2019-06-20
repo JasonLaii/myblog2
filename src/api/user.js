@@ -7,8 +7,6 @@ const signup = ( account,password ) =>{
     account,
     password
   }
-  console.log("signup-function")
-  console.log(data)
 
   return axios.post('/api/signup',data)
 

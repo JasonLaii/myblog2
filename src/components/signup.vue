@@ -78,13 +78,17 @@ export default {
         password: this.password
       };
 
-      console.log("THIS IS IN Components")
-      console.log(data)
-      
 
+      
       //vuex-action 要使用actions 不能用action
       //用action会出现 [vuex]unknown action type:.. 问题
-      this.$store.dispatch("SIGN_UP",data)
+      this.$store.dispatch("SIGN_UP",data).then(()=>{
+        
+        if(this.$store.getters.message.success){
+          this.$router.push('/index')
+        }
+
+      })
 
     }
   }

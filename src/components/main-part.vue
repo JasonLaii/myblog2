@@ -1,5 +1,6 @@
 <template>
   <div class="main-part">
+      
       <ContentCard></ContentCard>
       <ContentCard></ContentCard>
       <ContentCard></ContentCard>
@@ -26,7 +27,6 @@ p{
   margin: 0;
 }
 .main-part{
-  background-color: #fff;
   margin: 0 auto;
   width: 60%;
   height: 100%;

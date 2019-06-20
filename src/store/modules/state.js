@@ -8,7 +8,8 @@ const state = {
   bio: "",
 
   message: {},
-
+  token: '',
+  
   //article
   title: "",
   summary: "",
