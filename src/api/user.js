@@ -20,6 +20,8 @@ const signin = (account,password) =>{
     account,
     password
   };
+  console.log("this is in front end api.")
+  console.log(data)
   return axios.post("/api/signin", data);
 }
 

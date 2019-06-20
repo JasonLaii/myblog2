@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 // app.set('view engine','html')
 
 //设置静态文件夹
-// app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'public')))
 
 
 app.use((err,req,res,next)=>{

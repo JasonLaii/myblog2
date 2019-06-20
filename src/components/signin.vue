@@ -32,7 +32,7 @@ export default {
         password: this.password
       }
 
-      this.$store.dispatch("")
+      this.$store.dispatch("SIGN_IN",data)
     }
   }
 }

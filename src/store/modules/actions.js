@@ -28,6 +28,9 @@ const actions = {
           text: data.message,
           icon: "error",
           button: 'RETRY!'
+        }).then(()=>{
+          
+          history.go(0);
         })
       }
 
@@ -38,8 +41,10 @@ const actions = {
 
   //登录
   [types.SIGN_IN](context,data){
+    console.log("Signin ..")
+    console.log(data)
 
-    signin(data.account,data,password).then(res=>{
+    signin(data.account,data.password).then(res=>{
 
       const data = res.data;
       if(data.success){
@@ -56,6 +61,11 @@ const actions = {
           text: data.message,
           icon: "error",
           button: 'Retry.'
+        }).then(()=>{
+          
+          location.reload();
+
+          // history.go(0)
         })
       }
     })
