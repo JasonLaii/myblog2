@@ -2,10 +2,7 @@
   <div class="main-part">
       
       <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
+      
     </div>  
 </template>
 
@@ -13,11 +10,14 @@
 export default {
   data(){
     return{
-
+      articles: [],
     }
   },
   components:{
     ContentCard:()=> import('../components/content-card'),
+  },
+  mounted(){
+    
   }
 }
 </script>

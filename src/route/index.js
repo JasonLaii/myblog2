@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 
-Vue.use(Router)
+Vue.use(Router);
 export default new Router({
   linkActiveClass: "active",
   mode: "history",
@@ -10,10 +10,32 @@ export default new Router({
       path: "/",
       name: "cover",
       component: () => import("../views/cover.vue")
-    },{
-      path: '/index',
-      name: 'index',
-      component: ()=> import('../views/index.vue')
+    },
+    {
+      path: "/index",
+      name: "index",
+      component: () => import("../views/index.vue"),
+      children: [
+        {
+          path: "/main-part",
+          name: "main-part",
+          component: () => import("../components/main-part.vue")
+        },
+        {
+          //文章详情
+          path: "/article-detail",
+          name: "article-detail",
+          component: () => import("../views/article-detail.vue")
+        },{
+          path: "/upload-article",
+          name: "upload-article",
+          component: ()=> import('../components/upload-article.vue')
+        },{
+          path: "/myinfo",
+          name: "myinfo",
+          component: () => import("../views/myinfo.vue")
+        },
+      ]
     },
     {
       path: "/signin",
@@ -26,17 +48,9 @@ export default new Router({
       component: () => import("../components/signup.vue")
     },
     {
-      path: "/myinfo",
-      name: "myinfo",
-      component: () => import("../views/myinfo.vue")
-    },{
-      path: "/article-detail",
-      name: "article-detail",
-      component: () => import("../views/article-detail.vue")
-    },{
-      path: '/index-box',
-      name: 'index-box',
-      component:()=> import('../components/index-box.vue')
+      path: "/index-box",
+      name: "index-box",
+      component: () => import("../components/index-box.vue")
     }
   ]
 });

@@ -62,6 +62,19 @@ export default {
         if (this.password !== this.repassword) {
           throw new Error("两次输入的密码不一致！！");
         }
+
+        const data = {
+          account: this.account,
+          password: this.password
+        };
+
+        //vuex-action 要使用actions 不能用action
+        //用action会出现 [vuex]unknown action type:.. 问题
+        this.$store.dispatch("SIGN_UP", data).then(() => {
+          if (this.$store.getters.message.success) {
+            this.$router.push("/main-part");
+          }
+        });
       } catch (err) {
         let error = err.toString().slice(6);
 
@@ -72,24 +85,6 @@ export default {
           button: "Retry!"
         });
       }
-
-      const data = {
-        account: this.account,
-        password: this.password
-      };
-
-
-      
-      //vuex-action 要使用actions 不能用action
-      //用action会出现 [vuex]unknown action type:.. 问题
-      this.$store.dispatch("SIGN_UP",data).then(()=>{
-        
-        if(this.$store.getters.message.success){
-          this.$router.push('/index')
-        }
-
-      })
-
     }
   }
 };

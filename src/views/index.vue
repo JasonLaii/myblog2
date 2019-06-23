@@ -1,7 +1,8 @@
 <template>
   <div>
     <Header></Header>
-    <MainPart></MainPart>
+    <!-- <MainPart></MainPart> -->
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -16,7 +17,8 @@ export default {
     Footer: () => import("../components/footer"),
     ContentCard: ()=> import('../components/content-card'),
     MainPart: ()=> import('../components/main-part')
-  }
+  },
+
 };
 </script>
 

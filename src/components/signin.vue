@@ -7,51 +7,72 @@
 
     <div>
       <label>PASSWORD</label>
-      <input type="password" name="password" placeholder="PLEASE ENTER YOUR PASSWORD" v-model="password">
+      <input
+        type="password"
+        name="password"
+        placeholder="PLEASE ENTER YOUR PASSWORD"
+        v-model="password"
+      >
     </div>
     <div>
-    <input type="button" value="SIGNIN" class="signin-submit" @click="signin">
-
+      <input type="button" value="SIGNIN" class="signin-submit" @click="signin">
     </div>
-
-    </form>  
+  </form>
 </template>
 
 <script>
+import swal from "sweetalert";
+
 export default {
-  data(){
-    return{
-      account: '',
-      password: '',
-    }
+  data() {
+    return {
+      account: "",
+      password: ""
+    };
   },
-  methods:{
-    signin(){
-      const data = {
-        account: this.account,
-        password: this.password
-      }
-
-      this.$store.dispatch("SIGN_IN",data).then(()=>{
-        console.log(this.$store.getters.message)
-        if(this.$store.getters.message.success){
-          this.$router.push('/index')
+  methods: {
+    signin() {
+      try {
+        if (this.account === "") {
+          throw new Error("账号不能为空！！");
         }
-      })
-      
+        if (this.password === "") {
+          throw new Error("密码不能为空！！");
+        }
 
+        const data = {
+          account: this.account,
+          password: this.password
+        };
+
+        this.$store.dispatch("SIGN_IN", data).then(() => {
+          console.log(this.$store.getters.message);
+          if (this.$store.getters.message.success) {
+            this.$router.push("/main-part");
+          }
+        });
+        
+      } catch (err) {
+        let error = err.toString().slice(6);
+
+        swal({
+          text: error,
+          icon: "error",
+          button: "Retry!!"
+        });
+      }
     }
   }
-}
+};
 </script>
 
 <style lang="less">
-@import '../../public/style/style.less';
+@import "../../public/style/style.less";
 
-.signin{
+.signin {
   .sign-box();
 }
-.signin-submit{
+.signin-submit {
   .button();
 }
 </style>

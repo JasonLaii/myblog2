@@ -8,9 +8,12 @@ const state = {
   bio: "",
 
   message: {},
+  //令牌
   token: '',
   
   //article
+  article:{},
+  articleList: [],
   title: "",
   summary: "",
   content: "",

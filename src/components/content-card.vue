@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card">
+  <div class="content-card" @click="gotoDetail">
     <div class="avatar">
       <i>
         <img src="image/avatar.jpg" alt="avatar">
@@ -7,28 +7,45 @@
     </div>
     <div class="card">
       <div class="card-title">
-        <h3>TEST TITLE</h3>
+        <h3>{{article.title}}</h3>
+        <!-- <h3>title</h3> -->
       </div>
 
       <div class="card-summary">
-        <p>TEST CONTENT</p>
-        <p>TEST CONTENT</p>
-        <p>TEST CONTENT</p>
-        <p>TEST CONTENT</p>
-        <p>TEST CONTENT</p>
-        <p>TEST CONTENT</p>
+        {{article.content}}
+        <!-- content -->
       </div>
 
       <div class="card-info">
-        <span class="card-info-watched">浏览：100</span>
-        <span class="card-info-comment"> <a> 评论：99</a></span>
+        <span class="card-info-watched">浏览：{{article.watched}}</span>
+        <!-- <span class="card-info-watched">浏览：12</span> -->
+        <span class="card-info-comment"> <a> 评论：{{article.comment}}</a></span>
+        <!-- <span class="card-info-comment"> <a> 评论：article.comment</a></span> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      article:{
+      },
+      // avatar: '',
+      // title: '',
+      // content: '',
+      // watched: Number,
+      // comment: Number,
+      props: ['article']
+    }
+  },
+  methods:{
+    gotoDetail(){
+      this.$router.push('/article-detail')
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -44,7 +61,7 @@ p {
   background-color: #fff;
   border-radius: 3px;
   border: none;
-  .box-shadow()
+  .box-shadow();
 }
 .avatar {
   width: 8%;

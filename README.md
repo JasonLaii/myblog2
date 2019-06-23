@@ -2,14 +2,11 @@
 
 
 ## technic
-### vue全家桶,nodejs,express,mongodb
+### vue全家桶,nodejs,express,mongodb,mongoose
 
 ## npm module
-### front end
-#### axios,sweetalert,font-awesome
+#### vue,vue-router,vuex,axios,sweetalert,font-awesome,marked,mongodb,mongoose,bcrypt,jsonwebtoken
 
-### back end
-#### mongodb,mongoose,bcrypt,jsonwebtoken
 
 
 ## the feature i want to achieve
@@ -22,7 +19,7 @@
 - 发表评论
 - 删除评论
 - 日志
-
+- 测试
 
 
 ## model

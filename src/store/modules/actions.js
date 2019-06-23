@@ -1,7 +1,7 @@
 import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
-import { resolve } from "any-promise";
+import { uploadArticle } from '../../api/article'
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -80,7 +80,34 @@ const actions = {
         }
       });
     });
+  },
+
+
+  //发布文章
+  [types.UPLOAD_ARTICLE](context, article){
+
+    uploadArticle(article).then(res=>{
+
+      this.$store.commit("SET_MESSAGE",res)
+      //文章发布成功
+      if(res.success){
+        swal({
+          text: res.message,
+          icon: "success",
+          button: "Yohoo..."
+        })
+        //文章发布失败
+      }else{
+        swal({
+          text: res.message,
+          icon: "error",
+          button: "Retry..."
+        })
+      }
+    })
   }
+
 };
 
 export default actions;
+

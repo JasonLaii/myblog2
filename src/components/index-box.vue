@@ -8,7 +8,7 @@
     </div>
 
     <div class="visitor">
-      <router-link to="/index"><p>VISIT AS VISITOR</p></router-link>
+      <router-link to="/main-part"><p>VISIT AS VISITOR</p></router-link>
     </div>
 
     </div>  

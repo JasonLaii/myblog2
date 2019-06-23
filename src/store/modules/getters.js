@@ -42,6 +42,12 @@ const getters = {
   viewNum(state){
     return state.viewNum
   },
+  articleList(state){
+    return state.articleList
+  },
+  article(state){
+    return state.article
+  },
 
   //comment
   commentNum(state){

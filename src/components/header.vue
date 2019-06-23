@@ -13,9 +13,12 @@
     <template v-if="show">
       <div class="dropdown">
         <template v-if="flag">
-          <a href>个人主页</a>
-          <a href>发表文章</a>
-          <a href>退出登录</a>
+          <!-- <a href="/main-part/upload-article">个人主页</a> -->
+          <router-link to="/myinfo">个人主页</router-link>
+          <!-- <a href="/main-part/upload-article">发表文章</a> -->
+          <router-link to="/upload-article">发表文章</router-link>
+          <!-- <a href>退出登录</a> -->
+          <router-link to="">退出登录</router-link>
         </template>
 
         <template v-else>
