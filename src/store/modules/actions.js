@@ -1,7 +1,7 @@
 import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
-import { uploadArticle } from '../../api/article'
+import { uploadArticle } from "../../api/article";
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -9,25 +9,25 @@ const actions = {
 
   //注册
   [types.SIGN_UP](context, data) {
-
-    return new Promise((resolve,reject)=>{
-      
+    // return new Promise((resolve, reject) => {
       signup(data.account, data.password).then(res => {
         const data = res.data;
         //注册成功
         if (data.success) {
           // context.commit("SET_MESSAGE",data);
           localStorage.setItem("user-token", data.token);
-          context.commit("SET_MESSAGE",data)
+          context.commit("SET_MESSAGE", data);
           context.commit("TOKEN", data.token);
-          
+
           swal({
             // title: 'SUCCESS!',
             text: data.message,
             icon: "success",
             button: "Yohooo.."
-          });
-          resolve();
+          }).then(()=>{
+            location.href = "http://localhost:8080/main-part"
+          })
+          // resolve();
         } else {
           //注册失败
           swal({
@@ -40,14 +40,12 @@ const actions = {
           });
         }
       });
-    })
+    // });
   },
 
   //登录
   [types.SIGN_IN](context, data) {
-
-    return new Promise((resolve, reject) => {
-
+    // return new Promise((resolve, reject) => {
       signin(data.account, data.password).then(res => {
         const data = res.data;
         context.commit("SET_MESSAGE", data);
@@ -62,8 +60,11 @@ const actions = {
             text: data.message,
             icon: "success",
             button: "Yohoo.."
-          });
-          resolve()
+          }).then(()=>{
+            location.href = "http://localhost:8080/main-part"
+            
+          })
+          // resolve();
         } else {
           //登录失败
 
@@ -76,38 +77,45 @@ const actions = {
 
             // history.go(0)
           });
-
         }
       });
-    });
+    // });
   },
 
-
   //发布文章
-  [types.UPLOAD_ARTICLE](context, article){
+  [types.UPLOAD_ARTICLE](context, article) {
 
-    uploadArticle(article).then(res=>{
+    return new Promise((resolve, reject) => {
 
-      this.$store.commit("SET_MESSAGE",res)
-      //文章发布成功
-      if(res.success){
-        swal({
-          text: res.message,
-          icon: "success",
-          button: "Yohoo..."
-        })
-        //文章发布失败
-      }else{
-        swal({
-          text: res.message,
-          icon: "error",
-          button: "Retry..."
-        })
-      }
-    })
+      //error
+      uploadArticle(article)
+      .then(res => {
+        console.log(res)
+        context.commit("SET_MESSAGE", res);
+        console.log("in action....show message....")
+        console.log(context.getters.message)
+        
+        //boom...
+        //文章发布成功
+        if (res.success) {
+          swal({
+            text: res.message,
+            icon: "success",
+            button: "Yohoo..."
+          });
+          resolve();
+          //文章发布失败
+        } else {
+          swal({
+            text: res.message,
+            icon: "error",
+            button: "Retry..."
+          })
+        }
+      })
+    
+    });
   }
-
 };
 
 export default actions;
-

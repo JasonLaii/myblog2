@@ -2,7 +2,8 @@
   <div class="header">
     <div class="header-title">
       <p>
-        <a>{{title}}</a>
+        <!-- <a>{{title}}</a> -->
+        <router-link to="/main-part">{{title}}</router-link>
       </p>
     </div>
 
@@ -16,14 +17,17 @@
           <!-- <a href="/main-part/upload-article">个人主页</a> -->
           <router-link to="/myinfo">个人主页</router-link>
           <!-- <a href="/main-part/upload-article">发表文章</a> -->
-          <router-link to="/upload-article">发表文章</router-link>
+          <router-link to="/posts">发表文章</router-link>
           <!-- <a href>退出登录</a> -->
-          <router-link to="">退出登录</router-link>
+          <!-- <router-link to="/index/signin" @click="signout">退出登录</router-link> -->
+          <a href="" @click="signout">退出登录</a>
         </template>
 
         <template v-else>
-          <a href>登录</a>
-          <a href>注册</a>
+          <!-- <a href>登录</a> -->
+          <router-link to="/index/signin">登录</router-link>
+          <!-- <a href>注册</a> -->
+          <router-link to="/index/signup">注册</router-link>
         </template>
       </div>
     </template>
@@ -45,9 +49,14 @@ export default {
       show: false
     };
   },
-  methods: {},
+  methods: {
+    signout(){
+      localStorage.removeItem('user-token');
+      this.$router.push('/main-part');
+    }
+  },
   mounted() {
-    if (this.$store.getters.token) {
+    if (localStorage.getItem('user-token')) {
       this.flag = true;
     } else {
       this.flag = false;

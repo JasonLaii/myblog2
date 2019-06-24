@@ -11,6 +11,7 @@ export default new Router({
       name: "cover",
       component: () => import("../views/cover.vue")
     },
+    //主页
     {
       path: "/index",
       name: "index",
@@ -23,18 +24,30 @@ export default new Router({
         },
         {
           //文章详情
-          path: "/article-detail",
+          path: "/posts/:articleId",
           name: "article-detail",
           component: () => import("../views/article-detail.vue")
-        },{
-          path: "/upload-article",
+        },
+        {
+          path: "/posts",
           name: "upload-article",
-          component: ()=> import('../components/upload-article.vue')
-        },{
+          component: () => import("../components/upload-article.vue")
+        },
+        {
           path: "/myinfo",
           name: "myinfo",
           component: () => import("../views/myinfo.vue")
         },
+        {
+          path: "signup",
+          name: "sub-signup",
+          component: () => import("../components/signup.vue")
+        },
+        {
+          path: "signin",
+          name: "sub-signin",
+          component: () => import("../components/signin.vue")
+        }
       ]
     },
     {

@@ -21,9 +21,8 @@ router.post("/signup", (req, res, next) => {
         });
       } else {
         //加密
-        console.log("arrived backend.");
-        console.log("account inside:" + account);
-
+        // console.log("arrived backend.");
+        // console.log("account inside:" + account);
 
         bcrypt.hash(password, 10, function(err, hash) {
           if (err) throw new Error(err);

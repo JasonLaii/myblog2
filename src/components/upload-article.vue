@@ -39,21 +39,28 @@ export default {
         if (this.title == "") {
           throw new Error("标题不能为空");
         }
-        if (!this.content == "") {
+        if(this.summary === ""){
+          throw new Error("文章简介不能为空");
+        }
+        if (this.content === "") {
           throw new Error("文章内容不能为空");
         }
-        if (this.content.length < 100) {
-          throw new Error("文章内容不能少于100字");
-        }
+        // if (this.content.length < 100) {
+        //   throw new Error("文章内容不能少于100字");
+        // }
 
         const data = {
           title: this.title,
           summary: this.summary,
           content: this.content,
-          token: this.$store.getters.token
+          token: localStorage.getItem('user-token')
         };
-
-        this.$store.dispatch("UPLOAD_ARTICLE", data);
+        console.log(data)
+        this.$store.dispatch("UPLOAD_ARTICLE", data)
+        .then(()=>{
+          console.log("back to components")
+          this.$router.push(`/article-detail/${this.$store.getters.message.articleId}`)
+        })
 
       } catch (err) {
         let error = err.toString().slice(6);

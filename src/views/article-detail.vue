@@ -1,6 +1,7 @@
 <template>
   <div class="article-container">
-    <content-card :article="article"></content-card>
+    <!-- <content-card :article="article"></content-card> -->
+    <p>This is article detail pages.</p>
   </div>
 </template>
 

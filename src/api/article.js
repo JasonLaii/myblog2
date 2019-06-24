@@ -4,7 +4,10 @@ import axios from 'axios'
 
 const uploadArticle = (article)=>{
 
-  return axios.post('/api/',article)  
+  console.log("font end api")
+  console.log(article)
+  return axios.post('/api/post',article)
+
 }
 
 export {

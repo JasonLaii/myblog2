@@ -45,12 +45,13 @@ export default {
           password: this.password
         };
 
-        this.$store.dispatch("SIGN_IN", data).then(() => {
-          console.log(this.$store.getters.message);
-          if (this.$store.getters.message.success) {
-            this.$router.push("/main-part");
-          }
-        });
+        this.$store.dispatch("SIGN_IN", data)
+        // .then(() => {
+        //   console.log(this.$store.getters.message);
+        //   if (this.$store.getters.message.success) {
+        //     this.$router.push("/main-part");
+        //   }
+        // });
         
       } catch (err) {
         let error = err.toString().slice(6);

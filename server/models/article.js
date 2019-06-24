@@ -14,6 +14,4 @@ ArticleSchema.set("autoIndex", false);
 
 const Article = mongoose.model('Article',ArticleSchema)
 
-module.exports = {
-  Article
-}
+module.exports =  Article

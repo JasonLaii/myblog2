@@ -8,7 +8,7 @@ const signup = ( account,password ) =>{
     password
   }
 
-  return axios.post('/api/signup',data)
+  return axios.post("/api/signup", data);
 
 }
 
