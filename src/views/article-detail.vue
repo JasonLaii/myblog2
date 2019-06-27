@@ -1,11 +1,17 @@
 <template>
   <div class="article-container">
-    <detail-card>
-      <!-- slot -->
+    <!-- <detail-card>
       <template #comment>
         <comment-card></comment-card>
       </template>
-    </detail-card>
+    </detail-card> -->
+    <content-card>
+
+      <template #comment>
+        <comment-card></comment-card>
+      </template>
+
+    </content-card>
   </div>
 </template>
 
@@ -18,6 +24,7 @@ export default {
     }
   },
   components:{
+    contentCard: ()=> import('../components/content-card'),
     detailCard: ()=> import('../components/detail-card'),
     commentCard: ()=> import('../components/comment-card')
 },

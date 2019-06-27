@@ -1,7 +1,7 @@
 import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
-import { uploadArticle } from "../../api/article";
+import { uploadArticle, getArticleList } from "../../api/article";
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -85,7 +85,7 @@ const actions = {
   //发布文章
   [types.UPLOAD_ARTICLE](context, article) {
 
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
 
       uploadArticle(article)
       .then(res => {
@@ -97,8 +97,10 @@ const actions = {
             text: res.data.message,
             icon: "success",
             button: "Yohoo..."
-          });
-          resolve();
+          }).then(()=>{
+            location.href("http://localhost:8080/main-part");
+          })
+          // resolve();
           //文章发布失败
         } else {
           swal({
@@ -109,7 +111,19 @@ const actions = {
         }
       })
     
-    });
+    // });
+  },
+  
+  //获取所有文章
+  [types.GET_ARTICLE_LIST](context){
+    
+    getArticleList.then(articleList=>{
+
+      context.commit("GET_ARTICLE_LIST",articleList)
+
+    })
+
+    
   }
 };
 

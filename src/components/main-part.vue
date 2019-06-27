@@ -1,7 +1,7 @@
 <template>
   <div class="main-part">
       
-      <ContentCard></ContentCard>
+      <content-card v-for="(article,index) in articleList" :key="index" :article="article"></content-card>
       
     </div>  
 </template>
@@ -10,14 +10,17 @@
 export default {
   data(){
     return{
-      articles: [],
+      // articles: [],
+      articleList: []
     }
   },
   components:{
-    ContentCard:()=> import('../components/content-card'),
+    contentCard:()=> import('../components/content-card'),
   },
   mounted(){
+    this.$store.dispatch("GET_ARTICLE_LIST");
     
+    this.articleList = this.$store.getters.articleList;
   }
 }
 </script>

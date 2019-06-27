@@ -29,6 +29,18 @@ router.post('/post',(req,res,next)=>{
     
   })
 
+});
+
+router.get('/main-part',(req,res,next)=>{
+
+  // Article.find().then(articleList=>{
+
+  //   res.send(articleList);
+  // })
+  Article.find().populate({path: 'author',model: 'User'}).exec(function(articleList){
+
+    res.send(articleList)
+  })
 })
 
 

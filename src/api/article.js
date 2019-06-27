@@ -11,6 +11,12 @@ const uploadArticle = (article)=>{
 
 }
 
+const getArticleList = ()=>{
+  
+  return axios.get('/api/main-part')
+}
+
 export {
-  uploadArticle
+  uploadArticle,
+  getArticleList
 }

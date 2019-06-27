@@ -45,6 +45,9 @@ const mutations = {
   [type.ARTICLE](state, article){
     state.article = article
   },
+  [type.GET_ARTICLE_LIST](state, articleList){
+    state.articleList = articleList
+  },
   
 
   //comment
