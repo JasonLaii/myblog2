@@ -1,6 +1,6 @@
 <template>
   <div class="upload-container">
-    <form action method="post" class="upload-article">
+    <form method="post" class="upload-article">
       <div class="aritlce-title">
         <label>文章题目</label>
         <input type="text" name="title" v-model="title">
@@ -16,7 +16,7 @@
         <textarea name="content" v-model="content" rows="10"></textarea>
       </div>
       <div>
-        <input type="submit" value="发布文章" class="article-button" @click="upload">
+        <input type="button" value="发布文章" class="article-button" @click="upload">
       </div>
     </form>
   </div>
@@ -55,11 +55,13 @@ export default {
           content: this.content,
           token: localStorage.getItem('user-token')
         };
-        console.log(data)
+        
+        this.$store.commit("ARTICLE",data)
         this.$store.dispatch("UPLOAD_ARTICLE", data)
         .then(()=>{
-          console.log("back to components")
-          this.$router.push(`/article-detail/${this.$store.getters.message.articleId}`)
+          console.log("in upload-article")
+          console.log(this.$store.getters.article)
+          this.$router.push(`/posts/${this.$store.getters.message.articleId}`)
         })
 
       } catch (err) {

@@ -7,9 +7,10 @@ const jwt = require('jsonwebtoken')
 
 //发表文章
 router.post('/post',(req,res,next)=>{
-  
+
+
   const data = req.body
-  console.log(data)
+
   const userId = jwt.verify(data.token,'justin').uid
   // console.log(userId)
   const article = {
@@ -18,13 +19,14 @@ router.post('/post',(req,res,next)=>{
     summary: data.summary,
     content: data.content
   }
-
   Article.create(article).then(article=>{
+
     res.json({
       success: true,
       message: "发布成功",
       articleId: article._id
     })
+    
   })
 
 })

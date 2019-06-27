@@ -1,7 +1,11 @@
 <template>
   <div class="article-container">
-    <!-- <content-card :article="article"></content-card> -->
-    <p>This is article detail pages.</p>
+    <detail-card>
+      <!-- slot -->
+      <template #comment>
+        <comment-card></comment-card>
+      </template>
+    </detail-card>
   </div>
 </template>
 
@@ -14,8 +18,16 @@ export default {
     }
   },
   components:{
-    contentCard: ()=>import('../components/content-card')
-  },
+    detailCard: ()=> import('../components/detail-card'),
+    commentCard: ()=> import('../components/comment-card')
+},
+  mounted(){
+    // console.log("in article-detail")
+    // console.log(this.$store.getters.article)
+
+    // this.article = this.$store.getters.article
+    // console.log(this.article)
+}
 
 }
 </script>

@@ -41,7 +41,8 @@ const mutations = {
   [type.ARTICLE_COMMENTNUM](state, { commentnum }){
     state.commentnum = commentnum
   },
-  [type.ARTICLE](state, { article }){
+  
+  [type.ARTICLE](state, article){
     state.article = article
   },
   

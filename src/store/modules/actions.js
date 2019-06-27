@@ -87,19 +87,14 @@ const actions = {
 
     return new Promise((resolve, reject) => {
 
-      //error
       uploadArticle(article)
       .then(res => {
-        console.log(res)
-        context.commit("SET_MESSAGE", res);
-        console.log("in action....show message....")
-        console.log(context.getters.message)
-        
-        //boom...
+        context.commit("SET_MESSAGE", res.data);
+        // console.log(res.data)
         //文章发布成功
-        if (res.success) {
+        if (res.data.success) {
           swal({
-            text: res.message,
+            text: res.data.message,
             icon: "success",
             button: "Yohoo..."
           });
@@ -107,7 +102,7 @@ const actions = {
           //文章发布失败
         } else {
           swal({
-            text: res.message,
+            text: res.data.message,
             icon: "error",
             button: "Retry..."
           })
