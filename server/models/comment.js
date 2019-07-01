@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
   author: { type: mongoose.Types.ObjectId, required: true },
   comment: { type: String, required: true }
-});
+},
+// { timestamps:{ createdAt: 'created_at', updatedAt: 'updated_at' }}
+);
 
 CommentSchema.set("autoIndex", false);
 

@@ -18,9 +18,14 @@ export default {
     contentCard:()=> import('../components/content-card'),
   },
   mounted(){
-    this.$store.dispatch("GET_ARTICLE_LIST");
-    
-    this.articleList = this.$store.getters.articleList;
+    this.$store.dispatch("GET_ARTICLE_LIST").then(()=>{
+      
+      this.articleList = this.$store.getters.articleList;
+      // console.log(this.articleList)
+    });
+    // console.log("in main-part")
+    // console.log(this.$store.getters.articleList)
+
   }
 }
 </script>

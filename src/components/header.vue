@@ -50,6 +50,7 @@ export default {
     };
   },
   methods: {
+    //退出登录
     signout(){
       localStorage.removeItem('user-token');
       this.$router.push('/main-part');

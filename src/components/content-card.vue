@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card" @click="gotoDetail">
+  <div class="content-card">
     
     <div class="avatar">
       <i>
@@ -7,7 +7,7 @@
       </i>
     </div>
 
-    <div class="card">
+    <div class="card" @click="gotoDetail(article.author._id)">
       <div class="card-title">
         <h3>{{article.title}}</h3>
       </div>
@@ -15,19 +15,15 @@
       <div class="card-summary">{{article.summary}}</div>
       <!-- <div class="card-content">{{article.content}}</div> -->
 
+    <!-- 评论 -->
       <div class="card-info">
-        <span class="card-info-watched">浏览：{{article.watched}}</span>
+        
+        <span class="card-info-watched">浏览：{{article.viewNum}}</span>
         <span class="card-info-comment">
-          <a>评论：{{article.comment}}</a>
+          <a>评论：{{article.commentNum}}</a>
         </span>
       </div>
 
-      <!--留言 -->
-      <!-- <template> -->
-        <div class="card-comment">
-          <slot name="comment"></slot>
-        </div>
-      <!-- </template> -->
     </div>
   </div>
 </template>
@@ -36,18 +32,17 @@
 export default {
   data() {
     return {
-      article: {},
-      // avatar: '',
-      // title: '',
-      // content: '',
-      // watched: Number,
-      // comment: Number,
-      props: ["article"]
+
     };
   },
+  props: ['article'],
   methods: {
-    gotoDetail() {
-      // this.$router.push('/article-detail')
+    gotoDetail(uid) {
+
+      this.$store.dispatch("UPDATE_VIEW_NUM");
+      this.$store.commit("ARTICLE",this.article)
+      this.$router.push(`/posts/${uid}`)
+
     }
   }
 };

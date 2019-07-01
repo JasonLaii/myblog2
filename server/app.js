@@ -10,7 +10,7 @@ const app = express();
 
 //连接数据库
 mongoose.connect(url,{ useNewUrlParser: true });
-// mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise
 
 let db = mongoose.connection;
 

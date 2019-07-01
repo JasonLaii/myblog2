@@ -56,8 +56,6 @@ export default {
           token: localStorage.getItem('user-token')
         };
         
-        //存储到store
-        this.$store.commit("ARTICLE",data)
         this.$store.dispatch("UPLOAD_ARTICLE", data)
         // .then(()=>{
           // console.log("in upload-article")
@@ -75,6 +73,17 @@ export default {
           button: "Retry!!"
         });
       }
+    }
+  },
+  mounted(){
+    if(!localStorage.getItem('user-token')){
+      swal({
+        text: '您尚未登录！！',
+        icon: 'error',
+        button: 'ops...'
+      }).then(()=>{
+        location.href = 'http://localhost:8080/main-part'
+      })
     }
   }
 };

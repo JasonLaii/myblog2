@@ -1,17 +1,11 @@
 <template>
   <div class="article-container">
-    <!-- <detail-card>
-      <template #comment>
-        <comment-card></comment-card>
-      </template>
-    </detail-card> -->
-    <content-card>
 
-      <template #comment>
-        <comment-card></comment-card>
-      </template>
+    <detail-card :article="article">
 
-    </content-card>
+
+    </detail-card>
+    
   </div>
 </template>
 
@@ -30,9 +24,10 @@ export default {
 },
   mounted(){
     // console.log("in article-detail")
-    // console.log(this.$store.getters.article)
+    console.log("article-detail components.")
+    console.log(this.$store.getters)
 
-    // this.article = this.$store.getters.article
+    this.article = this.$store.getters.article
     // console.log(this.article)
 }
 

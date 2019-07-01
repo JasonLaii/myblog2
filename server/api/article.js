@@ -31,16 +31,23 @@ router.post('/post',(req,res,next)=>{
 
 });
 
+//get articles
 router.get('/main-part',(req,res,next)=>{
 
-  // Article.find().then(articleList=>{
-
-  //   res.send(articleList);
-  // })
-  Article.find().populate({path: 'author',model: 'User'}).exec(function(articleList){
+  Article.find().sort({'_id':-1}).populate({path: 'author',model: 'User'}).then(function(articleList){
 
     res.send(articleList)
+    // console.log(articleList)
   })
+
+}),
+
+//点击量
+router.get('/update-view-num',(req,res,next)=>{
+
+  let postId = req.params.postId;
+  
+  Article.updateOne({ _id: postId},{ $inc: { viewNum: 1 }}).exec();
 })
 
 
