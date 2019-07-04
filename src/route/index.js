@@ -6,6 +6,7 @@ export default new Router({
   linkActiveClass: "active",
   mode: "history",
   routes: [
+    //封面
     {
       path: "/",
       name: "cover",
@@ -17,6 +18,7 @@ export default new Router({
       name: "index",
       component: () => import("../views/index.vue"),
       children: [
+        //主页
         {
           path: "/main-part",
           name: "main-part",
@@ -28,6 +30,12 @@ export default new Router({
           name: "article-detail",
           component: () => import("../views/article-detail.vue")
         },
+        {
+          path: "/posts/:articleId/comment",
+          name: "upload-article",
+          component: () => import("../components/upload-comment.vue")
+        },
+        //发表文章
         {
           path: "/posts",
           name: "upload-article",
@@ -48,8 +56,15 @@ export default new Router({
           name: "sub-signin",
           component: () => import("../components/signin.vue")
         }
+        //留言页
+        // {
+        //   path: "/comment",
+        //   name: "upload-comment",
+        //   component: () => import("../components/upload-comment.vue")
+        // }
       ]
     },
+
     {
       path: "/signin",
       name: "signin",

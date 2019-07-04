@@ -3,10 +3,11 @@
   src: url("../../public/font/Amatic-Bold.ttf");
 }
 
-body, h3 {
+body,
+h3 {
   margin: 0;
 }
-a{
+a {
   cursor: pointer;
   color: #000;
 }
@@ -19,13 +20,15 @@ a{
 
 .header,
 .footer {
-  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei",
+    sans-serif;
 }
-.footer{
+.footer {
   margin: 0 auto;
   font-size: 0.4em;
   text-align: center;
-  a{
+  a {
     color: #aaa;
   }
 }
@@ -73,7 +76,7 @@ a{
   background-color: rgba(192, 57, 43, 0.3);
   position: relative;
   // box-shadow: 0px 1px 4px #ccc;
-  .box-shadow(0px,1px,10px);
+  .box-shadow(0px, 1px, 10px);
   div {
     // padding-left: 1em;
     align-items: center;
@@ -99,6 +102,59 @@ a{
     line-height: 2.2em;
   }
 }
+
+.form-label() {
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  text-align: left;
+}
+
+.form-input {
+  font-size: 12px;
+  line-height: 22px;
+  width: 90%;
+  margin-bottom: 8px;
+  padding-left: 10px;
+}
+////////////////////// form
+
+.upload-container {
+  margin: 0 auto;
+  width: 50%;
+  height: 100%;
+  .upload-article {
+    padding: 30px 16px;
+    margin: 30px 0;
+    background-color: #fff;
+    border-radius: 3px;
+    border: none;
+    .box-shadow();
+    div {
+      width: 90%;
+      margin: 30px auto;
+      label {
+        .form-label();
+      }
+      input {
+        .form-input();
+      }
+      textarea {
+        width: 90%;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+  }
+}
+
+.article-button,
+.comment-button {
+  cursor: pointer;
+  .button();
+  padding: 6px 0;
+}
+
 //////////////////////////////////////////////
 .button() {
   background-color: rgba(129, 205, 192, 1);
@@ -110,8 +166,8 @@ a{
   outline: none;
   padding: 0;
 }
-.button{
-  .button()
+.button {
+  .button();
 }
 
 .box-shadow(@offsetX: 1px,@offsetY: 1px,@blur: 20px,@color:#aaa) {
@@ -126,9 +182,9 @@ a{
   font-size: 8vw;
 }
 
-
 //card
-.content-card, .detail-card {
+.content-card,
+.detail-card {
   padding: 30px 16px;
   margin: 30px 0;
   background-color: #fff;
@@ -154,11 +210,10 @@ a{
   padding: 30px 20px 10px 20px;
   display: inline-block;
   width: 82%;
-  
+
   .card-title {
     padding: 0 0 10px;
     border-bottom: 1px solid #bbb;
-    
   }
   .card-summary {
     padding: 10px 0 10px 0;
@@ -168,8 +223,17 @@ a{
   .card-info {
     padding: 10px 0 16px 0;
     font-size: 12px;
-    .card-info-comment{
+    .card-info-comment {
       float: right;
     }
   }
+}
+
+pre {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: rgba(158, 158, 158, 0.1);
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 300;
 }

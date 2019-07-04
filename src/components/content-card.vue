@@ -39,8 +39,8 @@ export default {
   methods: {
     gotoDetail(uid) {
 
-      this.$store.dispatch("UPDATE_VIEW_NUM");
       this.$store.commit("ARTICLE",this.article)
+      this.$store.dispatch("UPDATE_VIEW_NUM");
       this.$router.push(`/posts/${uid}`)
 
     }

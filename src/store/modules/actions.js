@@ -2,6 +2,7 @@ import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
 import { uploadArticle, getArticleList, updateViewNum } from "../../api/article";
+import { uploadComment, deleteComment } from '../../api/comment'
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -86,6 +87,7 @@ const actions = {
     // return new Promise((resolve, reject) => {
 
     uploadArticle(article).then(res => {
+
       context.commit("SET_MESSAGE", res.data);
       // console.log(res.data)
       //文章发布成功
@@ -123,13 +125,60 @@ const actions = {
     });
   },
 
+  //获取某篇文章
+  GET_POST_BY_ID(context,postId){
+
+  },
+
   //更新点击量
   UPDATE_VIEW_NUM(context){
 
-    let author = context.getters.article._id;
-    updateViewNum(author)
+    let postId = context.getters.article._id
+    updateViewNum(postId)
     
+  },
+
+  //更新文章
+  UPDATE_ARTICLE(context){
+
+  },
+  //删除文章
+  DELETE_ARTICLE(context){
+
+  },
+
+
+  //comment
+  //发表评论
+  UPLOAD_COMMENT(context,data){
+    
+    uploadComment(data).then(res=>{
+
+      if(res.data.success){
+        
+        // context.commit("")
+
+        swal({
+          text: res.data.message,
+          icon: 'success',
+          button: 'cool..'
+        })
+      }else{
+
+        swal({
+          text: res.data.message,
+          icon: 'error',
+          button: 'retry...'
+        })
+      }
+    })
+
+  },
+  //删除评论
+  DELETE_COMMENT(context){
+
   }
+
 };
 
 export default actions;

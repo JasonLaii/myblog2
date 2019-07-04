@@ -25,6 +25,7 @@
 <script>
 import swal from "sweetalert";
 
+
 export default {
   data() {
     return {
@@ -45,9 +46,9 @@ export default {
         if (this.content === "") {
           throw new Error("文章内容不能为空");
         }
-        // if (this.content.length < 100) {
-        //   throw new Error("文章内容不能少于100字");
-        // }
+        if (this.content.length < 100) {
+          throw new Error("文章内容不能少于100字");
+        }
 
         const data = {
           title: this.title,
@@ -91,45 +92,8 @@ export default {
 
 <style lang="less" scoped>
 @import "../../public/style/style.less";
-.upload-container {
-  margin: 0 auto;
-  width: 50%;
-  height: 100%;
-  .upload-article {
-    padding: 30px 16px;
-    margin: 30px 0;
-    background-color: #fff;
-    border-radius: 3px;
-    border: none;
-    .box-shadow();
-    div {
-      width: 90%;
-      margin: 30px auto;
-      label {
-        text-align: center;
-        font-size: 14px;
-        line-height: 20px;
-        display: block;
-        text-align: left;
-      }
-      input {
-        font-size: 12px;
-        line-height: 22px;
-        width: 90%;
-        margin-bottom: 8px;
-        padding-left: 10px;
-      }
-      textarea {
-        width: 90%;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    }
-  }
-}
 
-.article-button {
-  cursor: pointer;
-  .button();
-  padding: 6px 0;
-}
+
+
+
 </style>

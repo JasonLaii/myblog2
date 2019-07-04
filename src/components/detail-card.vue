@@ -13,7 +13,9 @@
         <h3>{{article.title}}</h3>
       </div>
       <!-- 文章内容 -->
-      <div class="card-content">{{article.content}}</div>
+      <div class="card-content" v-html="this.article.content">
+        
+        </div>
 
       <!-- 浏览、评论删除 -->
       <div class="card-info">
@@ -27,8 +29,7 @@
       <div class="card-comment">
         <comment-card></comment-card>
         <comment-card></comment-card>
-        <comment-card></comment-card>
-        <comment-card></comment-card>
+
       </div>
 
     </div>
@@ -36,6 +37,8 @@
 </template>
 
 <script>
+import 'highlight.js/styles/github.css'
+
 export default {
   data() {
     return {

@@ -3,8 +3,9 @@
 
     <detail-card :article="article">
 
-
     </detail-card>
+
+    <function-bar :article="article"></function-bar>
     
   </div>
 </template>
@@ -20,15 +21,13 @@ export default {
   components:{
     contentCard: ()=> import('../components/content-card'),
     detailCard: ()=> import('../components/detail-card'),
-    commentCard: ()=> import('../components/comment-card')
+    commentCard: ()=> import('../components/comment-card'),
+    functionBar: ()=> import('../components/function-bar')
 },
   mounted(){
-    // console.log("in article-detail")
-    console.log("article-detail components.")
-    console.log(this.$store.getters)
 
     this.article = this.$store.getters.article
-    // console.log(this.article)
+
 }
 
 }

@@ -40,7 +40,7 @@ router.post("/signup", (req, res, next) => {
             //密钥
             const privateKey = 'justin'
             //生产token - 令牌
-            const token = jwt.sign(userToken,privateKey)
+            const token = jwt.sign(userToken,privateKey,{ expiresIn: '1h' })
             res.json({
               success: true,
               message: "注册成功！",
@@ -70,7 +70,7 @@ router.post("/signin", (req, res, next) => {
               account: user.account
             }
             const privateKey = 'justin'
-            const token = jwt.sign(userToken,privateKey)
+            const token = jwt.sign(userToken,privateKey,{ expiresIn: '1h' })
 
             res.json({
               success: true,

@@ -9,8 +9,12 @@
 
 
     <div class="comment-info">
-      <span class="comment">我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你我爱你</span>
+      <span class="comment">我爱你我爱你我爱你我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱</span>
       <span class="comment-time">2019-06-28</span>
+    </div>
+
+    <div class="comment-del">
+      <button>删除评论</button>
     </div>
 
   </div>
@@ -37,14 +41,10 @@ export default {
     display: inline-block;
     width: 45px;
     height: 45px;
-    // float: left;
-    img{
-
-    }
   }
   .comment-info{
     display: inline-block;
-    width: 90%;
+    width: 76%;
     height: 100%;
     span{
       display: inline-block;
@@ -52,11 +52,23 @@ export default {
       font-family:Arial, Helvetica, sans-serif;
       height: 100%;
     }
-    .comment{
-      
-    }
+
     .comment-time{
       float: right;
+    }
+  }
+
+  .comment-del{
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    button{
+      border-radius: 10px;
+      background: rgba(255, 0, 0, .5);
+      outline: none;
+      border: none;
+      padding:  6px;
     }
   }
 }

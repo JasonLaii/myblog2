@@ -4,6 +4,15 @@ const router = express.Router()
 const Article = require('../models/article')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const marked = require('marked')
+const hljs = require('highlight.js')
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function(code){
+    return hljs.highlightAuto(code).value;
+  }
+})
 
 //发表文章
 router.post('/post',(req,res,next)=>{
@@ -35,18 +44,27 @@ router.post('/post',(req,res,next)=>{
 router.get('/main-part',(req,res,next)=>{
 
   Article.find().sort({'_id':-1}).populate({path: 'author',model: 'User'}).then(function(articleList){
-
+    
+    for(let article of articleList){
+      //解析成markdown
+      article.content = marked(article.content || '',{ sanitize: true })
+    }
     res.send(articleList)
-    // console.log(articleList)
+
   })
 
 }),
 
+//获取某篇文章
+router.get('',(req,res,next)=>{
+
+})
+
 //点击量
 router.get('/update-view-num',(req,res,next)=>{
 
-  let postId = req.params.postId;
-  
+  let postId = req.query.postId
+
   Article.updateOne({ _id: postId},{ $inc: { viewNum: 1 }}).exec();
 })
 
