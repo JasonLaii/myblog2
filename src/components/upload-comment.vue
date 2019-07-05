@@ -2,7 +2,7 @@
   <form class="upload-comment">
     <div class="comment-content">
       <label>留言</label>
-      <input type="text" name="comment"  v-model="comment"/>
+      <input type="text" name="comment" v-model="comment" />
     </div>
 
     <div>
@@ -13,37 +13,49 @@
 
 
 <script>
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export default {
   data() {
     return {
-      comment: '',
+      comment: ""
     };
   },
-  methods:{
-    uploadComment(){
+  methods: {
+    uploadComment() {
+      try {
+        if (!this.comment) {
+          throw new Error("留言内容不能为空！");
+        }
+        let postId = this.$route.params.articleId;
+        let data = {
+          author: "",
+          postId: postId,
+          comment: this.comment,
+          token: localStorage.getItem("user-token")
+        };
 
-      let data = {
-        author: '',
-        // postId: ,
-        comment: this.comment,
-        token: localStorage.getItem('user-token')
+        this.$store.dispatch("UPLOAD_COMMENT", data);
+      } catch (e) {
+        let error = e.toString().slice(6);
+        swal({
+          text: error,
+          icon: "error",
+          button: "Retry..."
+        });
       }
-
-      this.$store.dispatch("UPLOAD_COMMENT",data);
-
     }
   },
-  mounted(){
-    if(!localStorage.getItem('user-token')){
+  
+  mounted() {
+    if (!localStorage.getItem("user-token")) {
       swal({
-        text: '您尚未登录！',
-        icon: 'error',
-        button: 'pwuu..'
-      }).then(()=>{
-        this.$router.push('/main-part')
-      })
+        text: "您尚未登录！",
+        icon: "error",
+        button: "pwuu.."
+      }).then(() => {
+        this.$router.push("/main-part");
+      });
     }
   }
 };

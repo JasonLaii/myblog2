@@ -32,7 +32,7 @@ export default new Router({
         },
         {
           path: "/posts/:articleId/comment",
-          name: "upload-article",
+          name: "upload-comment",
           component: () => import("../components/upload-comment.vue")
         },
         //发表文章

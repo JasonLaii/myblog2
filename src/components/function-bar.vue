@@ -1,43 +1,60 @@
 <template>
-
   <div class="function-bar-container">
-    
     <div>
       <router-link to="/main-part">更新文章</router-link>
     </div>
 
+    <template v-if="show">
+      <div>
+        <router-link @click="delPost">删除文章</router-link>
+      </div>
+    </template>
+
     <div>
       <router-link :to="{ path: `/posts/${this.article.author._id}/comment`}">发表评论</router-link>
     </div>
-
-    </div>  
+  </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
+      show: false
+    };
+  },
+  props: ["article"],
+  methods: {
+    delPost(){
 
+      // try{
+
+      // }catch(err){
+
+      // }
+
+      this.$store.dispatch("DELETE_ARTICLE")
     }
   },
-  props: ['article'],
-  methods:{
-
+  mounted() {
+    //判断是否有删除的权限
+    if (this.$store.getters.article.author == this.$store.getters.message._id) {
+      show = true;
+    }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
-
-.function-bar-container{
+.function-bar-container {
   position: fixed;
   top: 30%;
   right: 10%;
-  div{
+  div {
     width: 80px;
-    a{
+    a {
       border-radius: 10px;
-      background-color: rgba(255, 0, 0, .4);
+      background-color: rgba(255, 0, 0, 0.4);
       width: 100%;
       height: 100%;
       display: inline-block;

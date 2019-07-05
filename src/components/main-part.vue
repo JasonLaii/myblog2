@@ -23,8 +23,6 @@ export default {
       this.articleList = this.$store.getters.articleList;
       // console.log(this.articleList)
     });
-    // console.log("in main-part")
-    // console.log(this.$store.getters.articleList)
 
   }
 }

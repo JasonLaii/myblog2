@@ -7,14 +7,18 @@
       </i>
     </div>
 
-
     <div class="comment-info">
-      <span class="comment">我爱你我爱你我爱你我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱我爱你我爱你我爱</span>
-      <span class="comment-time">2019-06-28</span>
+      <span class="comment">{{comment.comment}}</span>
+      <span class="comment-time" >{{comment.created_at}}</span>
     </div>
 
+    <!-- 判断是否是留言本人、文章博主 -->
+    <template v-if="show">
+      
+    </template>
+
     <div class="comment-del">
-      <button>删除评论</button>
+      <button @click="delComment">删除评论</button>
     </div>
 
   </div>
@@ -24,9 +28,23 @@
 export default {
   data(){
     return{
-
+      show: false,
     }
   },
+  props:['comment'],
+  methods:{
+    delComment(){
+      this.$store.dispatch("DELETE_COMMENT")
+    }
+  },
+  mounted(){
+    if(!localStorage.getItem('user-token')){
+      this.show = false
+    }
+    if( this.$store.getters.message._id == comment.author){
+      this.show = true;
+    }
+  }
 }
 </script>
 

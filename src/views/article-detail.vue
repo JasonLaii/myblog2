@@ -25,7 +25,7 @@ export default {
     functionBar: ()=> import('../components/function-bar')
 },
   mounted(){
-
+    
     this.article = this.$store.getters.article
 
 }

@@ -48,10 +48,19 @@ const getters = {
   article(state){
     return state.article
   },
+  articleMessage(state){
+    return state.articleMessage
+  },
 
   //comment
   commentNum(state){
     return state.commentNum
+  },
+  commentList(state){
+    return state.commentList
+  },
+  comment(state){
+    return state.comment
   }
 }
 

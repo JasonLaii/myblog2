@@ -23,8 +23,15 @@ const updateViewNum = (postId)=>{
   })
 }
 
+//删除文章
+const deletePost = (postId)=>{
+
+  return axios.get('/api/delete-post',{ params: { postId: postId }})
+}
+
 export {
   uploadArticle,
   getArticleList,
-  updateViewNum
+  updateViewNum,
+  deletePost
 }

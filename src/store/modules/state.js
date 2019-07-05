@@ -6,7 +6,7 @@ const state = {
   nickname: "",
   avatar: "image/avatar.jpg",
   bio: "",
-
+  
   message: {},
   //令牌
   token: '',
@@ -14,6 +14,7 @@ const state = {
   //article
   article:{},
   articleList: [],
+  articleMessage: "",
   title: "",
   summary: "",
   content: "",
@@ -21,7 +22,8 @@ const state = {
   commentNum: "",
 
   //comment
-  comment: ""
+  comment: "",
+  commentList: [],
 
 }
 

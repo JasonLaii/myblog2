@@ -27,8 +27,7 @@
 
       <!-- 评论区 -->
       <div class="card-comment">
-        <comment-card></comment-card>
-        <comment-card></comment-card>
+        <comment-card v-for="(comment,index) in this.commentList" :key="index" :comment="comment"></comment-card>
 
       </div>
 
@@ -43,11 +42,18 @@ export default {
   data() {
     return {
       // article:{},
+      commentList:[]
     };
   },
   props: ["article"],
   components: {
     commentCard: () => import("./comment-card")
+  },
+  mounted(){
+    this.$store.dispatch("GET_COMMENT_LIST",this.$route.params.articleId).then(()=>{
+
+      this.commentList = this.$store.getters.commentList
+    })
   }
 };
 </script>

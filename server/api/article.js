@@ -68,5 +68,20 @@ router.get('/update-view-num',(req,res,next)=>{
   Article.updateOne({ _id: postId},{ $inc: { viewNum: 1 }}).exec();
 })
 
+//删除文章
+router.get('/delete-post',(req,res,next)=>{
+
+  let postId = req.query.postId;
+  
+  Article.deleteOne({ _id: postId }).then(()=>{
+
+    res.json({
+      success: true,
+      message: "删除成功",
+
+    })
+  })
+})
+
 
 module.exports = router

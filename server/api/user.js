@@ -21,8 +21,6 @@ router.post("/signup", (req, res, next) => {
         });
       } else {
         //加密
-        // console.log("arrived backend.");
-        // console.log("account inside:" + account);
 
         bcrypt.hash(password, 10, function(err, hash) {
           if (err) throw new Error(err);
@@ -41,10 +39,12 @@ router.post("/signup", (req, res, next) => {
             const privateKey = 'justin'
             //生产token - 令牌
             const token = jwt.sign(userToken,privateKey,{ expiresIn: '1h' })
+            
             res.json({
               success: true,
               message: "注册成功！",
-              token: token
+              token: token,
+              _id: user._id
             });
           });
         });
@@ -75,7 +75,8 @@ router.post("/signin", (req, res, next) => {
             res.json({
               success: true,
               message: "登录成功",
-              token : token
+              token : token,
+              _id: user._id
             });
           } else {
             throw new Error("密码错误！！");

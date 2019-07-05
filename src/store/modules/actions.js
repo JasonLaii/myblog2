@@ -1,8 +1,8 @@
 import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
-import { uploadArticle, getArticleList, updateViewNum } from "../../api/article";
-import { uploadComment, deleteComment } from '../../api/comment'
+import { uploadArticle, getArticleList, updateViewNum, deletePost } from "../../api/article";
+import { uploadComment, deleteComment, getCommentList } from '../../api/comment'
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -49,10 +49,11 @@ const actions = {
     // return new Promise((resolve, reject) => {
     signin(data.account, data.password).then(res => {
       const data = res.data;
-      context.commit("SET_MESSAGE", data);
-
+      
       //登录成功
       if (data.success) {
+
+        context.commit("SET_MESSAGE", data);
         localStorage.setItem("user-token", data.token);
         context.commit("TOKEN", data);
 
@@ -88,10 +89,10 @@ const actions = {
 
     uploadArticle(article).then(res => {
 
-      context.commit("SET_MESSAGE", res.data);
       // console.log(res.data)
       //文章发布成功
       if (res.data.success) {
+        context.commit("GET_ARTICLE_MESSAGE", res.data);
         swal({
           text: res.data.message,
           icon: "success",
@@ -145,6 +146,27 @@ const actions = {
   //删除文章
   DELETE_ARTICLE(context){
 
+    let postId = context.$route.params.articleId
+
+    deletePost(postId).then(res=>{
+
+      if(res.data.success){
+        context.commit("GET_ARTICLE_MESSAGE",res.data)
+        swal({
+          message: res.data.message,
+          icon: 'success',
+          button: 'cooool..'
+        })
+
+      }else{
+        swal({
+          message: res.data.message,
+          icon: 'error',
+          button: 'Retry..'
+        })
+      }
+
+    })
   },
 
 
@@ -162,6 +184,9 @@ const actions = {
           text: res.data.message,
           icon: 'success',
           button: 'cool..'
+        }).then(()=>{
+          //跳转到文章详情页
+          location.href = `http://localhost:8080/posts/${data.postId}`
         })
       }else{
 
@@ -177,6 +202,20 @@ const actions = {
   //删除评论
   DELETE_COMMENT(context){
 
+    // deleteComment()
+  },
+
+
+  //获取一篇文章下的所有评论
+  GET_COMMENT_LIST(context,postId){
+
+    return new Promise((resolve,reject)=>{
+
+      getCommentList(postId).then(res=>{
+        context.commit("GET_COMMENT_LIST",res.data)
+        resolve();
+      })
+    })
   }
 
 };
