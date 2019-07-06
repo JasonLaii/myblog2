@@ -10,7 +10,7 @@ const actions = {
 
   //注册
   [types.SIGN_UP](context, data) {
-    // return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
     signup(data.account, data.password).then(res => {
       const data = res.data;
       //注册成功
@@ -26,9 +26,9 @@ const actions = {
           icon: "success",
           button: "Yohooo.."
         }).then(() => {
-          location.href = "http://localhost:8080/main-part";
+          // location.href = "http://localhost:8080/main-part";
         });
-        // resolve();
+        resolve();
       } else {
         //注册失败
         swal({
@@ -41,15 +41,14 @@ const actions = {
         });
       }
     });
-    // });
+    });
   },
 
   //登录
   [types.SIGN_IN](context, data) {
-    // return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
     signin(data.account, data.password).then(res => {
       const data = res.data;
-      
       //登录成功
       if (data.success) {
 
@@ -58,14 +57,14 @@ const actions = {
         context.commit("TOKEN", data);
 
         swal({
-          // title: 'success'
           text: data.message,
           icon: "success",
           button: "Yohoo.."
         }).then(() => {
-          location.href = "http://localhost:8080/main-part";
+          // location.href = "http://localhost:8080/main-part";
+
         });
-        // resolve();
+        resolve();  
       } else {
         //登录失败
 
@@ -80,7 +79,7 @@ const actions = {
         });
       }
     });
-    // });
+    });
   },
 
   //发布文章
@@ -93,6 +92,8 @@ const actions = {
       //文章发布成功
       if (res.data.success) {
         context.commit("GET_ARTICLE_MESSAGE", res.data);
+        console.log("in action page...")
+        console.log(res.data)
         swal({
           text: res.data.message,
           icon: "success",

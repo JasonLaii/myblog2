@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const Article = require('../models/article')
 const User = require('../models/user')
+const Comment = require('../models/comment')
 const jwt = require('jsonwebtoken')
 const marked = require('marked')
 const hljs = require('highlight.js')
@@ -16,7 +17,6 @@ marked.setOptions({
 
 //发表文章
 router.post('/post',(req,res,next)=>{
-
 
   const data = req.body
 
@@ -73,14 +73,18 @@ router.get('/delete-post',(req,res,next)=>{
 
   let postId = req.query.postId;
   
-  Article.deleteOne({ _id: postId }).then(()=>{
+  //删除文章
+  //删除文章下的所有评论
+  Promise.all([
+    Comment.deleteMany({ postId: postId }),
+    Article.deleteOne({ _id: postId })]).then(result=>{
 
-    res.json({
-      success: true,
-      message: "删除成功",
-
+      res.json({
+        success: true,
+        message: "删除成功"
+      });
     })
-  })
+
 })
 
 

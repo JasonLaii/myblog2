@@ -51,7 +51,7 @@ export default {
   },
   mounted(){
     this.$store.dispatch("GET_COMMENT_LIST",this.$route.params.articleId).then(()=>{
-
+      
       this.commentList = this.$store.getters.commentList
     })
   }

@@ -4,9 +4,9 @@
       <router-link to="/main-part">更新文章</router-link>
     </div>
 
-    <template v-if="show">
+    <template v-if="this.$store.getters.article.author._id == this.$store.getters.message._id">
       <div>
-        <router-link @click="delPost">删除文章</router-link>
+        <router-link to="" @click="delPost">删除文章</router-link>
       </div>
     </template>
 
@@ -33,14 +33,13 @@ export default {
 
       // }
 
-      this.$store.dispatch("DELETE_ARTICLE")
+      this.$store.dispatch("DELETE_ARTICLE").then(()=>{
+        this.$router.push('/main-part')
+      })
     }
   },
   mounted() {
-    //判断是否有删除的权限
-    if (this.$store.getters.article.author == this.$store.getters.message._id) {
-      show = true;
-    }
+
   }
 };
 </script>

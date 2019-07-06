@@ -7,13 +7,14 @@
       </i>
     </div>
 
-    <div class="card" @click="gotoDetail(article.author._id)">
+    <div class="card" @click="gotoDetail(article._id)">
       <div class="card-title">
         <h3>{{article.title}}</h3>
       </div>
 
       <div class="card-summary">{{article.summary}}</div>
       <!-- <div class="card-content">{{article.content}}</div> -->
+
 
     <!-- 评论 -->
       <div class="card-info">
@@ -37,11 +38,10 @@ export default {
   },
   props: ['article'],
   methods: {
-    gotoDetail(uid) {
-
+    gotoDetail(postId) {
       this.$store.commit("ARTICLE",this.article)
       this.$store.dispatch("UPDATE_VIEW_NUM");
-      this.$router.push(`/posts/${uid}`)
+      this.$router.push(`/posts/${postId}`)
 
     }
   }

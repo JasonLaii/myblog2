@@ -41,7 +41,7 @@ export default {
     if(!localStorage.getItem('user-token')){
       this.show = false
     }
-    if( this.$store.getters.message._id == comment.author){
+    if( this.$store.getters.message._id == this.comment.author){
       this.show = true;
     }
   }

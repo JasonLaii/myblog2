@@ -13,7 +13,7 @@
 
     <template v-if="show">
       <div class="dropdown">
-        <template v-if="flag">
+        <template v-if="token">
           <!-- <a href="/main-part/upload-article">个人主页</a> -->
           <router-link to="/myinfo">个人主页</router-link>
           <!-- <a href="/main-part/upload-article">发表文章</a> -->
@@ -46,7 +46,8 @@ export default {
     return {
       title: "我的blog",
       flag: false,
-      show: false
+      show: false,
+      token: localStorage.getItem('user-token')
     };
   },
   methods: {
@@ -61,6 +62,32 @@ export default {
       this.flag = true;
     } else {
       this.flag = false;
+    }
+    window.addEventListener('click',()=>{
+      console.log(this.token)
+      console.log(localStorage.getItem('user-token'))
+    })
+  },
+
+  watch:{
+    token: function(){
+      return this.token ? true : false;
+    },
+    // localStorage.getItem('user-token'): function(){
+
+    // }
+  },
+  computed:{
+    isLogin: function(){
+      
+      if(localStorage.getItem('user-token')){
+        console.log("have token")
+        return true
+      }else{
+        console.log("no token")
+        return false
+      }
+      // return token ? true : false;
     }
   }
 };

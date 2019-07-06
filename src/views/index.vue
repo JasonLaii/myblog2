@@ -10,7 +10,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // token: this.$store.getters.token
+    };
   },
   components: {
     Header: () => import("../components/header"),
