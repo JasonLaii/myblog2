@@ -41,11 +41,11 @@
   </div>
 </template>
 <script>
+import { eventBus } from '../eventBus'
 export default {
   data() {
     return {
       title: "我的blog",
-      flag: false,
       show: false,
       token: localStorage.getItem('user-token')
     };
@@ -58,24 +58,18 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem('user-token')) {
-      this.flag = true;
-    } else {
-      this.flag = false;
-    }
-    window.addEventListener('click',()=>{
-      console.log(this.token)
-      console.log(localStorage.getItem('user-token'))
+
+    eventBus.$on('setItem',()=>{      
+      this.token = localStorage.getItem('user-token')
     })
+
   },
 
   watch:{
     token: function(){
       return this.token ? true : false;
     },
-    // localStorage.getItem('user-token'): function(){
 
-    // }
   },
   computed:{
     isLogin: function(){

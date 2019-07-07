@@ -13,7 +13,7 @@
         <h3>{{article.title}}</h3>
       </div>
       <!-- 文章内容 -->
-      <div class="card-content" v-html="this.article.content">
+      <div class="card-content" v-html="article.content">
         
         </div>
 
@@ -41,7 +41,6 @@ import 'highlight.js/styles/github.css'
 export default {
   data() {
     return {
-      // article:{},
       commentList:[]
     };
   },
@@ -49,11 +48,21 @@ export default {
   components: {
     commentCard: () => import("./comment-card")
   },
+  created(){
+
+
+  },
   mounted(){
-    this.$store.dispatch("GET_COMMENT_LIST",this.$route.params.articleId).then(()=>{
-      
+
+    //获取commentList
+    this.$store.dispatch("GET_COMMENT_LIST",this.$route.params.articleId).then(()=>{      
       this.commentList = this.$store.getters.commentList
     })
+
+
+  },
+  computed:{
+    
   }
 };
 </script>

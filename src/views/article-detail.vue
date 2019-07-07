@@ -24,9 +24,27 @@ export default {
     commentCard: ()=> import('../components/comment-card'),
     functionBar: ()=> import('../components/function-bar')
 },
+  created(){
+    this.article = this.$store.getters.article
+  },
   mounted(){
     
-    this.article = this.$store.getters.article
+    //在页面刷新前将postId存储到sessionStorage
+    window.addEventListener("beforeunload",()=>{
+      sessionStorage.setItem('postId',this.article._id)      
+    })
+
+    //
+    if(this.$store.getters.article.title){
+      console.log('have aritlce')
+    }else{
+      console.log('no article')
+      this.$store.dispatch("GET_POST_BY_ID",sessionStorage.getItem('postId')).then(()=>{
+        this.article = this.$store.getters.article
+      })
+
+    }
+
 
 }
 

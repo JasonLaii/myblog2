@@ -56,8 +56,13 @@ router.get('/main-part',(req,res,next)=>{
 }),
 
 //获取某篇文章
-router.get('',(req,res,next)=>{
-
+router.get(`/post/:postId`,(req,res,next)=>{
+  let postId = req.params.postId;
+  
+  Article.findOne({ _id: postId }).then(article=>{
+    article.content = marked(article.content || '',{ sanitize: true });
+    res.send(article)
+  })
 })
 
 //点击量
@@ -78,6 +83,13 @@ router.get('/delete-post',(req,res,next)=>{
   Promise.all([
     Comment.deleteMany({ postId: postId }),
     Article.deleteOne({ _id: postId })]).then(result=>{
+
+      let commentList = result[0]
+      let article = result[1]
+      console.log('commentList')
+      console.log(commentList)
+      console.log('article')
+      console.log(article)
 
       res.json({
         success: true,

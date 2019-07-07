@@ -25,13 +25,21 @@ const updateViewNum = (postId)=>{
 
 //删除文章
 const deletePost = (postId)=>{
-
+  
   return axios.get('/api/delete-post',{ params: { postId: postId }})
+}
+
+//通过postId获取文章
+const getPostById = (postId)=>{
+  console.log("action page")
+  console.log(postId)
+  return axios.get(`/api/post/${postId}`)
 }
 
 export {
   uploadArticle,
   getArticleList,
   updateViewNum,
-  deletePost
+  deletePost,
+  getPostById
 }

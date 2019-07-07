@@ -1,8 +1,10 @@
 import * as types from "./type";
 import { signup, signin } from "../../api/user";
 import swal from "sweetalert";
-import { uploadArticle, getArticleList, updateViewNum, deletePost } from "../../api/article";
+import { uploadArticle, getArticleList, updateViewNum, deletePost,getPostById } from "../../api/article";
 import { uploadComment, deleteComment, getCommentList } from '../../api/comment'
+import { eventBus } from '../../eventBus'
+
 
 const actions = {
   //actions 在接收参数的时候，第一个参数为总为context
@@ -17,17 +19,21 @@ const actions = {
       if (data.success) {
         // context.commit("SET_MESSAGE",data);
         localStorage.setItem("user-token", data.token);
+        sessionStorage.setItem("user_id",data._id)
         context.commit("SET_MESSAGE", data);
         context.commit("TOKEN", data.token);
+
+        eventBus.$emit("setItem")
 
         swal({
           // title: 'SUCCESS!',
           text: data.message,
           icon: "success",
           button: "Yohooo.."
-        }).then(() => {
+        })
+        // .then(() => {
           // location.href = "http://localhost:8080/main-part";
-        });
+        // });
         resolve();
       } else {
         //注册失败
@@ -54,16 +60,18 @@ const actions = {
 
         context.commit("SET_MESSAGE", data);
         localStorage.setItem("user-token", data.token);
+        sessionStorage.setItem("user_id",data._id)
         context.commit("TOKEN", data);
 
+        eventBus.$emit("setItem");
         swal({
           text: data.message,
           icon: "success",
           button: "Yohoo.."
-        }).then(() => {
+        })
+        // .then(() => {
           // location.href = "http://localhost:8080/main-part";
-
-        });
+        // });
         resolve();  
       } else {
         //登录失败
@@ -129,7 +137,15 @@ const actions = {
 
   //获取某篇文章
   GET_POST_BY_ID(context,postId){
+    
+    return new Promise((resolve,reject)=>{
 
+      getPostById(postId).then((res)=>{
+        context.commit("ARTICLE",res.data)
+
+        resolve();
+      })
+    })
   },
 
   //更新点击量
@@ -145,31 +161,31 @@ const actions = {
 
   },
   //删除文章
-  DELETE_ARTICLE(context){
-
-    let postId = context.$route.params.articleId
+  DELETE_ARTICLE(context,postId){
 
     deletePost(postId).then(res=>{
+        
+        if(res.data.success){
+          context.commit("GET_ARTICLE_MESSAGE",res.data)
+          swal({
+            text: res.data.message,
+            icon: 'success',
+            button: 'cooool..'
+          }).then(()=>{
+            location.href = 'http://localhost:8080/main-part'
+          })
 
-      if(res.data.success){
-        context.commit("GET_ARTICLE_MESSAGE",res.data)
-        swal({
-          message: res.data.message,
-          icon: 'success',
-          button: 'cooool..'
-        })
+        }else{
+          swal({
+            text: res.data.message,
+            icon: 'error',
+            button: 'Retry..'
+          })
+        }
 
-      }else{
-        swal({
-          message: res.data.message,
-          icon: 'error',
-          button: 'Retry..'
-        })
-      }
 
     })
   },
-
 
   //comment
   //发表评论
@@ -179,8 +195,6 @@ const actions = {
 
       if(res.data.success){
         
-        // context.commit("")
-
         swal({
           text: res.data.message,
           icon: 'success',

@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+
 Vue.use(Router);
+
 export default new Router({
   linkActiveClass: "active",
   mode: "history",
@@ -30,6 +32,7 @@ export default new Router({
           name: "article-detail",
           component: () => import("../views/article-detail.vue")
         },
+        //发表评论
         {
           path: "/posts/:articleId/comment",
           name: "upload-comment",
@@ -39,12 +42,18 @@ export default new Router({
         {
           path: "/posts",
           name: "upload-article",
-          component: () => import("../components/upload-article.vue")
+          component: () => import("../components/upload-article.vue"),
+          meta:{
+            requireAuth: true
+          }
         },
         {
           path: "/myinfo",
           name: "myinfo",
-          component: () => import("../views/myinfo.vue")
+          component: () => import("../views/myinfo.vue"),
+          meta:{
+            requireAuth: true
+          }
         },
         {
           path: "signup",
@@ -82,3 +91,4 @@ export default new Router({
     }
   ]
 });
+

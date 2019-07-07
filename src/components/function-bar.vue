@@ -1,45 +1,52 @@
 <template>
   <div class="function-bar-container">
-    <div>
-      <router-link to="/main-part">更新文章</router-link>
-    </div>
 
-    <template v-if="this.$store.getters.article.author._id == this.$store.getters.message._id">
+    <!-- 是否登录 -->
+    <template v-if="isLogin">
+      <!-- 是否作者 -->
+      <template v-if="isAuthor">
+        <div>
+          <router-link to="/main-part">更新文章</router-link>
+        </div>
+        <div>
+          <span @click="delPost">删除文章</span>
+        </div>
+      </template>
+
       <div>
-        <router-link to="" @click="delPost">删除文章</router-link>
+        <router-link :to="{ path: `/posts/${this.article._id}/comment`}">发表评论</router-link>
       </div>
     </template>
-
-    <div>
-      <router-link :to="{ path: `/posts/${this.article.author._id}/comment`}">发表评论</router-link>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      show: false
-    };
+    return {};
   },
   props: ["article"],
   methods: {
-    delPost(){
-
-      // try{
-
-      // }catch(err){
-
-      // }
-
-      this.$store.dispatch("DELETE_ARTICLE").then(()=>{
-        this.$router.push('/main-part')
-      })
+    delPost() {
+      let postId = this.$route.params.articleId
+      console.log('postId   '+postId)
+      this.$store.dispatch("DELETE_ARTICLE",postId)
     }
   },
-  mounted() {
-
+  created() {},
+  mounted() {},
+  computed: {
+    isLogin() {
+      return localStorage.getItem("user-token") ? true : false;
+    },
+    isAuthor() {
+      // console.log("function-bar")
+      // console.log(this.$store.getters.article)
+      return this.$store.getters.article.author || this.$store.getters.article.author._id ==
+        sessionStorage.getItem('user_id')
+        ? true
+        : false;
+    }
   }
 };
 </script>
@@ -51,7 +58,7 @@ export default {
   right: 10%;
   div {
     width: 80px;
-    a {
+    a,span {
       border-radius: 10px;
       background-color: rgba(255, 0, 0, 0.4);
       width: 100%;
@@ -62,6 +69,7 @@ export default {
       padding: 10px 4px;
       margin-bottom: 10px;
       box-shadow: 2px 2px 10px #bbb;
+      cursor: pointer;
     }
   }
 }
