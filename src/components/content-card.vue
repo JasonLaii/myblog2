@@ -39,11 +39,16 @@ export default {
   props: ['article'],
   methods: {
     gotoDetail(postId) {
+      // console.log(this.article)
+      // console.log(postId)
       this.$store.commit("ARTICLE",this.article)
       this.$store.dispatch("UPDATE_VIEW_NUM");
       this.$router.push(`/posts/${postId}`)
 
     }
+  },
+  mounted(){
+    // console.log(this.article.title)
   }
 };
 </script>

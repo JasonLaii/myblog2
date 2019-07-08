@@ -35,7 +35,10 @@ export default {
           token: localStorage.getItem("user-token")
         };
 
-        this.$store.dispatch("UPLOAD_COMMENT", data);
+        this.$store.dispatch("UPLOAD_COMMENT", data).then(()=>{
+          
+          this.$router.push(`/posts/${this.$store.getters.article._id}`)
+        });
       } catch (e) {
         let error = e.toString().slice(6);
         swal({

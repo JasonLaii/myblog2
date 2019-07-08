@@ -13,6 +13,7 @@
 <script>
 
 export default {
+  name: 'article-detail',
   data(){
     return{
       article: {}
@@ -33,7 +34,8 @@ export default {
     window.addEventListener("beforeunload",()=>{
       sessionStorage.setItem('postId',this.article._id)      
     })
-
+    
+    
     //
     if(this.$store.getters.article.title){
       console.log('have aritlce')
@@ -44,7 +46,6 @@ export default {
       })
 
     }
-
 
 }
 

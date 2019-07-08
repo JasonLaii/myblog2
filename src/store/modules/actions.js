@@ -191,33 +191,60 @@ const actions = {
   //发表评论
   UPLOAD_COMMENT(context,data){
     
-    uploadComment(data).then(res=>{
+    return new Promise((resolve,reject)=>{
 
-      if(res.data.success){
-        
-        swal({
-          text: res.data.message,
-          icon: 'success',
-          button: 'cool..'
-        }).then(()=>{
-          //跳转到文章详情页
-          location.href = `http://localhost:8080/posts/${data.postId}`
-        })
-      }else{
-
-        swal({
-          text: res.data.message,
-          icon: 'error',
-          button: 'retry...'
-        })
-      }
+      uploadComment(data).then(res=>{
+  
+        if(res.data.success){
+          
+          swal({
+            text: res.data.message,
+            icon: 'success',
+            button: 'cool..'
+          })
+          // .then(()=>{
+          //   //跳转到文章详情页
+          //   location.href = `http://localhost:8080/posts/${data.postId}`
+          // })
+        }else{
+  
+          swal({
+            text: res.data.message,
+            icon: 'error',
+            button: 'retry...'
+          })
+        }
+        resolve();
+      })
     })
+
 
   },
   //删除评论
-  DELETE_COMMENT(context){
+  DELETE_COMMENT(context,commentId){
 
-    // deleteComment()
+    return new Promise((resolve,reject)=>{
+      
+      deleteComment(commentId).then(res=>{
+  
+        if(res.data.success){
+  
+          swal({
+            text: res.data.message,
+            icon: 'success',
+            button: 'cool..'
+          })
+        }else{
+          swal({
+            text: res.data.message,
+            icon: 'error',
+            button: 'Retry..'
+          })
+  
+        }
+        resolve()
+      })
+    })
   },
 
 

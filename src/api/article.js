@@ -31,8 +31,8 @@ const deletePost = (postId)=>{
 
 //通过postId获取文章
 const getPostById = (postId)=>{
-  console.log("action page")
-  console.log(postId)
+  // console.log("action page")
+  // console.log(postId)
   return axios.get(`/api/post/${postId}`)
 }
 

@@ -18,15 +18,15 @@ export default {
   },
   mounted(){
     
-    if(this.$store.getters.articleList.length == 0){
+    // if(this.$store.getters.articleList.length == 0){
       //请求文章列表
       this.$store.dispatch("GET_ARTICLE_LIST").then(()=>{
         
         this.articleList = this.$store.getters.articleList;
       });
-    }else{
-      this.articleList = this.$store.getters.articleList
-    }
+    // }else{
+    //   this.articleList = this.$store.getters.articleList
+    // }
 
   }
 }

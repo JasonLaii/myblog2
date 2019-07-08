@@ -40,8 +40,7 @@ export default {
       return localStorage.getItem("user-token") ? true : false;
     },
     isAuthor() {
-      // console.log("function-bar")
-      // console.log(this.$store.getters.article)
+
       return this.$store.getters.article.author || this.$store.getters.article.author._id ==
         sessionStorage.getItem('user_id')
         ? true

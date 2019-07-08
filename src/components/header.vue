@@ -53,7 +53,9 @@ export default {
   methods: {
     //退出登录
     signout(){
+      //清空本地存储的数据
       localStorage.removeItem('user-token');
+      sessionStorage.removeItem('user_id')
       this.$router.push('/main-part');
     }
   },

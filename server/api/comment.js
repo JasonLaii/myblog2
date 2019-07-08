@@ -28,7 +28,12 @@ router.post("/upload-comment", (req, res, next) => {
     postId: data.postId,
     comment: data.comment
   };
+
   Comment.create(comment).then(comment => {
+
+    //文章中的留言数加一
+    Article.updateOne({ _id: comment.postId },{ $inc: { commentNum: 1 }}).exec();
+
     res.json({
       success: true,
       message: "留言成功"
