@@ -45,8 +45,13 @@ router.post("/upload-comment", (req, res, next) => {
 router.get("/remove-comment", (req, res, next) => {
 
   let commentId = req.query.commentId
+  let postId = req.query.postId
 
   Comment.deleteOne({ _id: commentId }).then(()=>{
+
+    //文章的评论数减一
+    Article.updateOne({ _id: postId}, { $inc: { commentNum: -1 } }).exec().then((res)=>{
+    })
 
     res.json({
       success: true,

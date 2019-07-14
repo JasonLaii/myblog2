@@ -9,9 +9,11 @@ const uploadComment = function(comment){
 
 
 //删除评论
-const deleteComment = function(comment){
+const deleteComment = function({ _id,postId }){
 
-  return axios.post('/api/remove-comment',{ params: { commentId : comment}})
+  console.log(_id)
+  console.log(postId)
+  return axios.get('/api/remove-comment',{ params: { commentId : _id, postId: postId}})
 }
 
 //获取某篇文章下的所有评论

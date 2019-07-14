@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'main-part',
   data(){
     return{
       articleList: []

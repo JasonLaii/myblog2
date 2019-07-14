@@ -34,7 +34,8 @@ export default {
   methods:{
     delComment(){
       
-      this.$store.dispatch("DELETE_COMMENT").then(()=>{
+      this.$store.dispatch("DELETE_COMMENT",this.comment).then(()=>{
+        
         this.$router.push(`/main-part`)
       })
     }

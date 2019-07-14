@@ -2,7 +2,7 @@
   <div>
 
     <Header></Header>
-    <keep-alive exclude="article-detail">
+    <keep-alive exclude="article-detail,main-part" >
       <router-view></router-view>
     </keep-alive>
     <Footer></Footer>
